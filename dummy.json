@@ -1,0 +1,26 @@
+// user's table return
+{
+  user_twitter_handle: 'obscyuriy',
+  name: 'yuriy bash',
+  cash_balance: 8000.00,
+  stocks: [
+    {
+    screen_name: 'KatyPerry',
+    name: 'Katy Perry',
+    follower_count_at_purchase: 69000000,
+    price_at_purchase: 1374.00,
+    date_of_purchase: timestamp,
+    shares: 12
+    },
+    {
+    screen_name: 'KatyPerry',
+    name: 'Katy Perry',
+    follower_count_at_purchase: 69000000,
+    price_at_purchase: 1374.00,
+    date_of_purchase: timestamp,
+    shares: 12
+    }
+  ]
+}
+
+
