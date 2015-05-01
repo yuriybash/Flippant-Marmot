@@ -1,0 +1,14 @@
+// relevant details from twitter API
+[
+  {
+  screen_name: 'KatyPerry'
+  name: 'Katy Perry',
+  follower_count: 69000000,
+  },
+  {
+  screen_name: 'BarackObama'
+  name: 'Barack Obama',
+  follower_count: 6900044444,
+  },
+]
+
