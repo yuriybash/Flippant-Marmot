@@ -1,0 +1,16 @@
+{
+  "name": "Flippant-Marmot",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rockytang/Flippant-Marmot",
+  "authors": [
+    "Hack Reactor Students <accounts@hackreactor.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
