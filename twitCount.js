@@ -1,4 +1,4 @@
-// This is a phantomJS script ($ phantomJS twitCount.sj)
+// This is a phantomJS script ($ phantomJS twitCount.js)
 
 var page = require('webpage').create(),
   url = 'http://twittercounter.com/pages/100';
@@ -25,7 +25,7 @@ page.open(url, function (status) {
       console.log('list length: ', names.length);
       return items;
     });
-    console.log(JSON.stringify(results, null, '\t'));
+    console.log(JSON.stringify({ date_scraped: new Date(), data: results }, null, '\t'));
   }
   phantom.exit();
 });
