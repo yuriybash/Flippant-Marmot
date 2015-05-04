@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/rockytang/Flippant-Marmot",
   "dependencies": {
+    "express": "^4.12.3",
+    "mongoose": "^4.0.2",
+    "passport": "^0.2.1",
+    "passport-twitter": "^1.0.3",
     "twitter": "^1.2.5"
   }
 }
