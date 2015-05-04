@@ -30,8 +30,8 @@ module.exports = {
                 console.log("Error getting data from Twitter API");
                 res.send(404, "Sorry, bad Twitter handle - try again");
             } else {
-            	console.log("Data successfully retrieved from Twitter API")
-            	var returnedUserData = JSON.parse(response)[0];
+                console.log("Data successfully retrieved from Twitter API")
+                var returnedUserData = JSON.parse(response)[0];
                 twitterUserData["screen_name"] = returnedUserData["screen_name"];
                 twitterUserData["name"] = returnedUserData["name"];
                 twitterUserData["follower_count_at_purchase"] = returnedUserData["followers_count"];
