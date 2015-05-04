@@ -17,8 +17,7 @@ module.exports = {
      * @param res author - response data for this response
      */
     getUserInfo: function(req, res) {
-        var twitterHandle = 'katyperry';//req.body.twitterHandle;
-        console.log(twitterHandle);
+        var twitterHandle = req.body.twitterHandle;
 
         //response is JSON string of arrays. We will parse first result in it, create JSON from it, and send it back to client.
         client.get('users/lookup', {
@@ -31,6 +30,7 @@ module.exports = {
                 console.log("Error getting data from Twitter API");
                 res.send(404, "Sorry, bad Twitter handle - try again");
             } else {
+            	console.log("Data successfully retrieved from Twitter API")
             	var returnedUserData = JSON.parse(response)[0];
                 twitterUserData["screen_name"] = returnedUserData["screen_name"];
                 twitterUserData["name"] = returnedUserData["name"];
