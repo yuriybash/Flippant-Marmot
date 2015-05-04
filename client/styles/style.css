@@ -1,0 +1,48 @@
+@font-face{
+  font-family: OstrichLight;
+  src: url(ostrichsans-light.otf);
+}
+@font-face{
+  font-family: OstrichBlack;
+  src: url(ostrichsans-black.otf);
+}
+body{
+  color: #fff;
+  position: absolute;
+  font-size: 3em;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  font-family: OstrichLight;
+}
+nav{
+  padding: 15px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  background: #5270B6;
+}
+#thick{
+  font-family: OstrichBlack;
+  font-size: .9em;
+}
+#logo{
+  float: left;
+}
+#menu{
+  float: right;
+  margin: 0;
+  margin-right: 10px;
+}
+#menu li{
+  display: inline;
+  margin-right: 40px;
+}
+a{
+  color: #fff;
+  text-decoration: none;
+}
+a:hover{
+  border-bottom: 2px solid white;
+}
