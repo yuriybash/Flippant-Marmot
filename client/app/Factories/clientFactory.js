@@ -1,7 +1,7 @@
 //This is a factory shared by the dashboard and search controllers. The functions
 //here will be used in both controllers' scopes.
 
-angular.module('shortly.services', [])
+angular.module('socialStock.factory', [])
 
 	.factory('clientFactory', function($http){
 
