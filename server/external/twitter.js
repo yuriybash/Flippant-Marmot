@@ -1,11 +1,14 @@
 var Twitter = require("twitter");
+var fs = require("fs");
 
 //API credentials for our app
+var credentials = fs.readFileSync('twitterAPIcredentials.txt', 'utf8').split(" ");
+
 var client = new Twitter({
-    consumer_key: 'Y5x8mOXZJOeKM02hSf7KW4MYS',
-    consumer_secret: '2uFdS0HmgssjRcsCN7JyDwXj1PYLrPWgmKSiEmQgpm10uKg5wD',
-    access_token_key: '2822221678-OSqIXMDn9MNNPIxC2PW47wUDPpNEeQIbmIXdTWi',
-    access_token_secret: 'CjbxFQWA7OXVZIqPEUXDRlpXdoeSNMN9TUcwSiyV6JF3d'
+    consumer_key: credentials[0],
+    consumer_secret: credentials[1],
+    access_token_key: credentials[2],
+    access_token_secret: credentials[3]
 });
 
 module.exports = {
