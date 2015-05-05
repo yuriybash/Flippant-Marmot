@@ -56,12 +56,9 @@ module.exports = {
           newPortfolio['user_twitter_handle'] = req.session.user.screen_name;
           newPortfolio['name'] = req.session.user.displayname;
 
-          console.log('newPortfolio is: ', newPortfolio)
           res.json(newPortfolio);
 
         } else {
-          console.log("portfolio found: ", portfolio);
-          console.log("req.session.user.screen_name is: ", req.session.user.screen_name)
           portfolio['user_twitter_handle'] = req.session.user.screen_name;
           portfolio['name'] = req.session.user.displayname;
           res.json(portfolio);
@@ -81,8 +78,7 @@ module.exports = {
     req.session.user.displayname = 'yuriy 3 bash';
 
     var userObj = req.session.user;
-
-    console.log('req.body: ', req.body);
+    console.log("inside buy function");
     // req.body should have:
     // {
     //     "screen_name": "@LadyGaga",
@@ -106,7 +102,6 @@ module.exports = {
           }
         });
 
-        console.log("new portfolio right after purchase: ", portfolio);
         portfolio['user_twitter_handle'] = req.session.user.screen_name;
         portfolio['name'] = req.session.user.displayname;
 
@@ -155,7 +150,8 @@ module.exports = {
         for(var i = portfolio.stocks.length - 1; i >= 0; i--){
           if(portfolio.stocks[i].screen_name === req.body.screen_name){
             if(portfolio.stocks[i].shares >= req.body.shares){
-                portfolio.stocks[i].shares -= req.body.shares;
+              console.log("i:", i)
+                portfolio.stocks[i].shares = portfolio.stocks[i].shares - req.body.shares;
             }
              else {
               portfolio.stocks.splice(i, 1);
@@ -163,17 +159,22 @@ module.exports = {
           }
         }
 
+        console.log("portfolio.stocks[1].shares outside for loop: ", portfolio.stocks[1])
+        console.log("new portfolio right before sale: ", portfolio);
+
+        portfolio['user_twitter_handle'] = req.session.user.screen_name;
+        portfolio['name'] = req.session.user.displayname;
+
         portfolio.save(function(err){
           if(err){
             console.log('Error!');
           }
+        res.json(portfolio);
         });
 
-        console.log("new portfolio right after purchase: ", portfolio);
-        portfolio['user_twitter_handle'] = req.session.user.screen_name;
-        portfolio['name'] = req.session.user.displayname;
+        console.log("new portfolio right after sale: ", portfolio);
 
-        res.json(portfolio);
+
       })
       .fail(function(error){
         console.log(error);
