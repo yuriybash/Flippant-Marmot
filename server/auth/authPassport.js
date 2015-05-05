@@ -11,12 +11,12 @@ module.exports = function (passport) {
 
   // Serialize the user for storing it in the session
   passport.serializeUser(function (user, done) {
-  	console.log('serializeUser ', user);
+  	// console.log('serializeUser ', user);
     done(null, user);
   });
 
   passport.deserializeUser(function (obj, done) {
-  	console.log('deserializeUser ', obj);
+  	// console.log('deserializeUser ', obj);
     done(null, obj);
   });
 
@@ -28,9 +28,9 @@ module.exports = function (passport) {
     User.findOne({
       provider_id: profile.id
     }, function (err, user) {
-    	console.log('ERROR in finding user on login: ', err);
+    	// console.log('ERROR in finding user on login: ', err);
       if (err) throw (err);
-      console.log('LOGIN no error, user: ', user);
+      // console.log('LOGIN no error, user: ', user);
       if (!err && user != null) return done(null, user);
 
       var user = new User({
