@@ -17,7 +17,7 @@ angular.module('socialStock.factory', [])
 		    });
 		  };
 
-		//gets Twitter stats for a specific handle; returns 
+		//gets Twitter stats for a specific handle; 
 		var getTwitterInfo = function (handle) {
 		    return $http({
 		      method: 'POST',
