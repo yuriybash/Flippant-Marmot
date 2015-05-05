@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Social</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body ng-app''>
+  <div id='nav'>
+    <div id='logo'>SOCIAL<span class='thick'>CAPITAL</span>
+    <ul id='menu'>
+      <li><a href='/dashboard'>Dash</a></li>
+      <li><a href='/search'>Search</a></li>
+      <li><a href='/logout'>Logout</a></li>
+    </ul>
+    </div>
+  </div>
+  <div ng-view class='view'>
+    <div id='info'>
+      <div class='networth thick'>NET WORTH</div>
+      <div id='cash'>CASH BALANCE</div>
+    </div>
+    <div id='headers'>
+      <div>STOCK</div>
+    </div>
+    <div id='stocks'>
+      <div class='stock'>
+        <div class='image'>img</div>
+        <div class='name'>
+          <div class='username'>username</div>
+          <div class='handle'>@handle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

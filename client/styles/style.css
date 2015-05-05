@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+@font-face{
+  font-family: OstrichLight;
+  src: url(ostrichsans-light.otf);
+}
+@font-face{
+  font-family: OstrichBlack;
+  src: url(ostrichsans-black.otf);
+}
+
+body{
+  margin: 0;
+  color: #fff;
+  font-size: 3em;
+  top: 0;
+  left: 0;
+  font-family: OstrichLight;
+}
+#nav{
+  padding: .1em .4em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #5270B6;
+}
+.thick{
+  font-family: OstrichBlack;
+  font-size: .9em;
+}
+#menu{
+  float: right;
+  margin: 0;
+}
+#menu li{
+  display: inline;
+  margin-right: 1em;
+}
+a{
+  color: #fff;
+  text-decoration: none;
+}
+a:hover{
+  border-bottom: 5px solid white;
+}
+.view{
+  background: black;
+  left: 0;
+  width: 100%;
+  height: 100px;
+}
+#info{
+  background: #DEDDDD;
+  padding: 0 .4em;
+}
+#info div{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+#headers{
+  background: #B2B3B3;
+  font-size: .5em;
+}
+.stock div{
+  /*display: inline;*/
+}
+.stock {
+  color: #B2B3B3;
+  padding: .2em;
+}
+.username{
+  display: block;
+  font-size: .3em;
+}
+.image{
+  float: left;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: .7em;
+  background: #B2B3B3;
+}
