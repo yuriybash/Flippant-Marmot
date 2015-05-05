@@ -4,8 +4,8 @@
 
 
 module.exports = {
-  findPortfolio: function (req, res, next, userId) {
-    console.log("i am still present @ findPortfolio, userId", userId)
+  findPortfolio: function (req, res, next) {
+    console.log("i am still present @ findPortfolio")
       // var findPortfolio = Q.nbind(Portfolio.findOne, Portfolio);
       // findPortfolio({userId: userId})
       //   .then(function (portfolio) {
@@ -28,14 +28,14 @@ module.exports = {
         name: 'Katy Perry',
         follower_count_at_purchase: 69000000,
         price_at_purchase: 1374.00,
-        date_of_purchase: timestamp,
+        date_of_purchase: "2015-05-04T19:53:22.373Z",
         shares: 12
       }, {
         screen_name: 'BarackObama',
         name: 'Barack Obama',
         follower_count_at_purchase: 58797293,
         price_at_purchase: 974.00,
-        date_of_purchase: timestamp,
+        date_of_purchase: "2015-05-04T19:53:22.373Z",
         shares: 12
       }]
     };
@@ -43,7 +43,7 @@ module.exports = {
   },
 
   updatePortfolio: function (req, res, next) {
-    console.log('New Portfolio: ', req.body);
+    console.log('update Portfolio: ', req.body);
     res.send('updatePortfolio called');
 
   },
@@ -65,8 +65,6 @@ module.exports = {
     res.send('newPortfolio called');
 
 
-    // var createPortfolio = Q.nbind(Portfolio.create, Portfolio);
-    // var findPortfolio = Q.nbind(Portfolio.findOne, Portfolio);
 
 
   }
