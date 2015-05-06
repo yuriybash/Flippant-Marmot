@@ -36,7 +36,7 @@ var visitAndReport = function (i) {
       fs.write('top100Stats.json', JSON.stringify(top100, null, '\t'), 'w');
     }
     this.echo('count: ' + response);
-  });
+  }, null, 10000);
 
 
   casper.run();
