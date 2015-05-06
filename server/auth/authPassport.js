@@ -56,6 +56,10 @@ module.exports = {
     } else {
       return res.send(401);
     }
+  },
+  
+  authenticated: function (req) {
+    return req.session && req.session.passport && req.session.passport.user;
   }
 
 };

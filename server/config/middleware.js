@@ -7,9 +7,6 @@ var session = require('express-session');
 var passport = require('passport');
 var auth = require('../auth/authPassport');
 // var helpers = require('./helpers.js');
-// 
-
-
 
 module.exports = function(app, express){
   app.use(cookieParser('add a secret here'));
@@ -22,13 +19,19 @@ module.exports = function(app, express){
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
-  app.get('/', function(req, res) {
-    if (req.session && req.session.passport
-     && req.session.passport.user) {
-       res.redirect('/index.html');
+  app.get('/', function(req, res, next) {
+    if (auth.authenticated(req)) {
+       next();
     } else {
       res.redirect('/app/auth/signin.html')
     }
+  });
+  app.use('/index.html', function(req, res, next){
+   if (auth.authenticated(req)) {
+     next();
+   } else {
+     res.redirect('/app/auth/signin.html');
+   }
   });
   app.use(express.static(path.join(__dirname,'/../../client')));
 
