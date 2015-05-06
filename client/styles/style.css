@@ -24,6 +24,9 @@ body{
   width: 100%;
   background: #5270B6;
 }
+.largeText{
+  font-size: 3em;
+}
 .thick{
   font-family: OstrichBlack;
   font-size: .9em;
@@ -72,12 +75,9 @@ a:hover{
   font-size: .5em;
   display: block;
 }
-.image{
-  float: left;
-  width: 1.4em;
-  height: 1.4em;
-  border-radius: .7em;
-  background: #B2B3B3;
+.center{
+  margin-top: .5em;
+  text-align: center;
 }
 #search form{
   height: 0.5em;
@@ -95,5 +95,7 @@ a:hover{
 #search button{
   border: none;
   border-radius: 2px;
-
+}
+#login{
+  background: #5270B6;
 }

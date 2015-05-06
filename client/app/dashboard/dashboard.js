@@ -7,6 +7,4 @@ angular.module('socialStock.dash', [])
 
   $scope.getPortfolio = clientFactory.getPortfolio;
   $scope.getPortfolio();
-
-
 });
