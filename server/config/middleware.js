@@ -5,7 +5,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
+var auth = require('../auth/authPassport');
 // var helpers = require('./helpers.js');
+// 
+
+
 
 module.exports = function(app, express){
   app.use(cookieParser('add a secret here'));
@@ -18,12 +22,20 @@ module.exports = function(app, express){
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
+  app.get('/', function(req, res) {
+    if (req.session && req.session.passport
+     && req.session.passport.user) {
+       res.redirect('/index.html');
+    } else {
+      res.redirect('/app/auth/signin.html')
+    }
+  });
   app.use(express.static(path.join(__dirname,'/../../client')));
 
 
-  app.use('/api/users', userRouter);
-  app.use('/api/portfolio', portfolioRouter);
-  app.use('/api/twitter', twitterRouter);
+  app.use('/api/users', auth.authenticate, userRouter);
+  app.use('/api/portfolio', auth.authenticate, portfolioRouter);
+  app.use('/api/twitter', auth.authenticate, twitterRouter);
   // app.use(helpers.errorLogger);
   // app.use(helpers.errorHandler);
 
@@ -33,14 +45,14 @@ module.exports = function(app, express){
   // require('../users/userRoutes.js')(userRouter);
   require('../portfolio/portfolioRoutes.js')(portfolioRouter);
 
-  require('../auth/authPassport')(passport);
+  auth.init(passport);
   // passport initialization
   app.use(passport.initialize());
   app.use(passport.session());
   // Passport Routes 
   app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/app/auth/signin.html');
   });
   app.get('/auth/twitter', passport.authenticate('twitter'));
   // app.get('/auth/facebook', passport.authenticate('facebook'));
