@@ -1,6 +1,6 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var errorHandler = require('errorHandler');
+// var errorHandler = require('errorHandler');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
