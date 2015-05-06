@@ -15,10 +15,11 @@
       <div class='username'>{{ stock.name }}</div>
       <div class='handle'>@{{ stock.screen_name }}</div>
     </div>
-    <div class='followers'>{{ stock.followers }}</div>
-    <div class='shareprice'>{{ findPrice(stock.screen_name) }}</div>
+    <div class='followers'>{{ stock.follower_count_at_query_time }}</div>
+    <div class='shareprice'>{{ stock.price_at_purchase }}</div>
     <div class='buttons'>
-      <button>BUY</button>
+      <input ng-model='shares'>
+      <button ng-click='buy(shares)'>BUY</button>
     </div>
   </div>
 </div>
