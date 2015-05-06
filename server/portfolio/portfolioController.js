@@ -5,7 +5,7 @@
 
 module.exports = {
   findPortfolio: function (req, res, next) {
-    console.log("i am still present @ findPortfolio")
+    console.log("i am still present @ findPortfolio, session: ", req.session);
       // var findPortfolio = Q.nbind(Portfolio.findOne, Portfolio);
       // findPortfolio({userId: userId})
       //   .then(function (portfolio) {
