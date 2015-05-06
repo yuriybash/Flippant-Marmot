@@ -3,6 +3,7 @@
 
 var Portfolio = require('./PortfolioModel.js');
 var Q = require('q');
+var twitter = require("../external/twitter.js")
 
 module.exports = {
   displayAllStocks: function(req, res, next){
@@ -15,37 +16,12 @@ module.exports = {
     // req.session.passport.user.screen_name = 'obscyuriy3';
     // req.session.passport.user.displayname = 'yuriy 3 bash';
 
-    console.log("TEST1111111111111")
-
     if(!req.session.passport){
-      var portfolio = {
-        user_twitter_handle: 'obscyuriy',
-        name: 'yuriy bash',
-        cash_balance: 8000.00,
-        stocks: [{
-          screen_name: 'KatyPerry',
-          name: 'Katy Perry',
-          follower_count_at_purchase: 69000000,
-          price_at_purchase: 1374.00,
-          date_of_purchase: "2015-05-04T19:53:22.373Z",
-          shares: 12
-        }, {
-          screen_name: 'BarackObama',
-          name: 'Barack Obama',
-          follower_count_at_purchase: 58797293,
-          price_at_purchase: 974.00,
-          date_of_purchase: "2015-05-04T19:53:22.373Z",
-          shares: 12
-        }]
-      };
-      res.json(portfolio);
+      console.log("You are not signed in!");
     } else {
 
     var userObj = req.session.passport.user; // to be changed
     var create, newPortfolio;
-
-        console.log("TEST2222222222")
-
 
     var findPortfolio = Q.nbind(Portfolio.findOne, Portfolio);
     findPortfolio({user_id: userObj._id})
@@ -67,9 +43,64 @@ module.exports = {
         } else {
           portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
           portfolio['name'] = req.session.passport.user.displayname;
-                  console.log("TEST3333333333")
-          res.json(portfolio);
-        }
+
+          if(portfolio.stocks.length > 0){
+            var twitterHandleArray = [];
+
+            for(var i = 0; i < portfolio.stocks.length; i++){
+              var twitterRequest = portfolio.stocks[i].screen_name.slice(1);
+              twitterHandleArray.push(twitterRequest);
+            }
+
+            console.log("twitterHandleArray", twitterHandleArray);
+
+            var twitterHandleString = twitterHandleArray.join(",")
+
+            twitter.getUserInfoHelper(twitterHandleString, function(followersCount){
+              //followersCount = [51255152, 2141241]
+
+              console.log("followersCount", followersCount)
+              for(var i = 0; i < followersCount.length; i++){
+
+                  for(var j = 0; j < portfolio.stocks.length; j++){
+
+
+                    console.log("portfolio.stocks[j]:", portfolio.stocks[j]);
+                    console.log("followersCount[i]", followersCount[i])
+
+                      console.log("portfolio.stocks[j][current_follower_count] before", portfolio.stocks[j]["current_follower_count"])
+                      portfolio.stocks[j]["current_follower_count"] = followersCount[i];
+                      console.log("portfolio.stocks[j][current_follower_count] after", portfolio.stocks[j]["current_follower_count"])
+
+                  }
+
+              }
+              console.log("portfolio right before it sends:" + portfolio)
+              res.json(portfolio);
+
+            })
+
+
+          }
+
+
+
+            // console.log("twitterRequest", twitterRequest);
+            // var currentNumFollowers = twitter.getUserInfoHelper(twitterRequest, function(twitterUserData["follower_count_at_query_time"]){
+            //   // console.log("currentNumFollowers", currentNumFollowers)
+            //   var previousFollowers = portfolio.stocks[i].follower_count_at_purchase;
+            //   var numDays = Math.abs(new Date() - portfolio.stocks[i].date_of_purchase)/(1000*60*60*24);
+            //   var growthRate = Math.pow((currentNumFollowers-previousFollowers)/previousFollowers, 1/numDays) - 1;
+            //   var growthRateVsExpected = (growthRate - .0007)/.0007;
+            //   portfolio.stocks[i]["newPrice"] = (1+growthRateVsExpected) * portfolio.stocks[i].price_at_purchase;
+
+
+
+
+          }
+
+          // res.json(portfolio);
+
       })
       .fail(function(error){
         console.log('error', error);
