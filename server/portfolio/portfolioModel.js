@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PortfolioSchema = new Schema({
- user_id     : Number,
+ user_id     : String,
  cash_balance: Number,
  stocks: [
   {shares: Number,

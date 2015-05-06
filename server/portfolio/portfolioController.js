@@ -7,14 +7,17 @@ var Q = require('q');
 module.exports = {
   displayAllStocks: function(req, res, next){
     console.log("display all stocks being called!");
+    console.log("req.session.passport LOOKS LIKE: ", req.session.passport)
 
-    req.session = {}; //REMOVE THIS LATER
-    req.session.user = {};
-    req.session.user._id = 3;
-    req.session.user.screen_name = 'obscyuriy3';
-    req.session.user.displayname = 'yuriy 3 bash';
+    // req.session.passport = {}; //REMOVE THIS LATER
+    // req.session.passport.user = {};
+    // req.session.passport.user._id = 3; 
+    // req.session.passport.user.screen_name = 'obscyuriy3';
+    // req.session.passport.user.displayname = 'yuriy 3 bash';
 
-    if(!req.session){
+    console.log("TEST1111111111111")
+
+    if(!req.session.passport){
       var portfolio = {
         user_twitter_handle: 'obscyuriy',
         name: 'yuriy bash',
@@ -38,8 +41,11 @@ module.exports = {
       res.json(portfolio);
     } else {
 
-    var userObj = req.session.user; // to be changed
+    var userObj = req.session.passport.user; // to be changed
     var create, newPortfolio;
+
+        console.log("TEST2222222222")
+
 
     var findPortfolio = Q.nbind(Portfolio.findOne, Portfolio);
     findPortfolio({user_id: userObj._id})
@@ -47,20 +53,21 @@ module.exports = {
         if(!portfolio){
           create = Q.nbind(Portfolio.create, Portfolio);
           newPortfolio = {
-            user_id     : req.session.user._id, // check passport authentication
+            user_id     : req.session.passport.user._id, // check passport authentication
             cash_balance: 10000,
             stocks: []
           }
           create(newPortfolio);
 
-          newPortfolio['user_twitter_handle'] = req.session.user.screen_name;
-          newPortfolio['name'] = req.session.user.displayname;
+          newPortfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
+          newPortfolio['name'] = req.session.passport.user.displayname;
 
           res.json(newPortfolio);
 
         } else {
-          portfolio['user_twitter_handle'] = req.session.user.screen_name;
-          portfolio['name'] = req.session.user.displayname;
+          portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
+          portfolio['name'] = req.session.passport.user.displayname;
+                  console.log("TEST3333333333")
           res.json(portfolio);
         }
       })
@@ -71,13 +78,13 @@ module.exports = {
   },
 
   buy: function(req, res, next){
-    req.session = {}; //REMOVE THIS LATER
-    req.session.user = {};
-    req.session.user._id = 3;
-    req.session.user.screen_name = 'obscyuriy3';
-    req.session.user.displayname = 'yuriy 3 bash';
+    // req.session.passport = {}; //REMOVE THIS LATER
+    // req.session.passport.user = {};
+    // req.session.passport.user._id = 3;
+    // req.session.passport.user.screen_name = 'obscyuriy3';
+    // req.session.passport.user.displayname = 'yuriy 3 bash';
 
-    var userObj = req.session.user;
+    var userObj = req.session.passport.user;
     console.log("inside buy function");
     // req.body should have:
     // {
@@ -102,8 +109,8 @@ module.exports = {
           }
         });
 
-        portfolio['user_twitter_handle'] = req.session.user.screen_name;
-        portfolio['name'] = req.session.user.displayname;
+        portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
+        portfolio['name'] = req.session.passport.user.displayname;
 
         res.json(portfolio);
       })
@@ -112,13 +119,13 @@ module.exports = {
       });
   },
   sell: function(req, res, next){
-    req.session = {}; //REMOVE THIS LATER
-    req.session.user = {};
-    req.session.user._id = 3;
-    req.session.user.screen_name = 'obscyuriy3';
-    req.session.user.displayname = 'yuriy 3 bash';
+    // req.session.passport = {}; //REMOVE THIS LATER
+    // req.session.passport.user = {};
+    // req.session.passport.user._id = 3;
+    // req.session.passport.user.screen_name = 'obscyuriy3';
+    // req.session.passport.user.displayname = 'yuriy 3 bash';
 
-    var userObj = req.session.user;
+    var userObj = req.session.passport.user;
 
     console.log('req.body: ', req.body);
     // at purchase:
@@ -129,7 +136,7 @@ module.exports = {
     //     "price_at_purchase": 12,
     //     "date_of_purchase": "Tue May 05 2015 14:11:43 GMT-0700 (PDT)",
     //     "shares": 100
-    //}
+    // }
     //
     //     at sale:
     // {
@@ -149,7 +156,7 @@ module.exports = {
 
         for(var i = portfolio.stocks.length - 1; i >= 0; i--){
           if(portfolio.stocks[i].screen_name === req.body.screen_name){
-            if(portfolio.stocks[i].shares >= req.body.shares){
+            if(portfolio.stocks[i].shares > req.body.shares){
               console.log("i:", i)
                 portfolio.stocks[i].shares = portfolio.stocks[i].shares - req.body.shares;
             }
@@ -162,8 +169,8 @@ module.exports = {
         console.log("portfolio.stocks[1].shares outside for loop: ", portfolio.stocks[1])
         console.log("new portfolio right before sale: ", portfolio);
 
-        portfolio['user_twitter_handle'] = req.session.user.screen_name;
-        portfolio['name'] = req.session.user.displayname;
+        portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
+        portfolio['name'] = req.session.passport.user.displayname;
 
         portfolio.save(function(err){
           if(err){
