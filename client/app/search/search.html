@@ -1,0 +1,24 @@
+<div id='search'>
+  <form>
+    <button ng-click='search(searchTerm)'>search</button>
+    <input type='text' ng-model='searchTerm'>
+  </form>
+</div>
+<div id='headers'>
+  <div>STOCK</div>
+  <div>FOLLOWERS</div>
+  <div>SHARE PRICE</div>
+</div>
+<div id='stocks'>
+  <div class='stock parent' ng-repeat='stock in stocks'>
+    <div class='name'>
+      <div class='username'>{{ stock.name }}</div>
+      <div class='handle'>@{{ stock.screen_name }}</div>
+    </div>
+    <div class='followers'>{{ stock.followers }}</div>
+    <div class='shareprice'>{{ findPrice(stock.screen_name) }}</div>
+    <div class='buttons'>
+      <button>BUY</button>
+    </div>
+  </div>
+</div>
