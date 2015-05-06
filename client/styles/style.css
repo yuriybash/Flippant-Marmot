@@ -65,10 +65,8 @@ a:hover{
 .stock {
   color: #B2B3B3;
 }
-.username{
-  display: block;
-}
 .parent div{
+  width: 20%;
   float: left;
   display: inline;
 }

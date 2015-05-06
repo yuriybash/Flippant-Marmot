@@ -1,11 +1,13 @@
 angular.module('socialStock.search', [])
 
-.controller('SearchController', function ($scope, $location) {
-  // Your code here
-
+.controller('SearchController', function ($scope, $location, clientFactory) {
   $scope.search = function(term){
-    console.log(term);
+    clientFactory.getTwitterInfo(term).then(function(data){
+      $scope.stocks = [data.data];
+      console.log($scope.stocks);
+    });
   };
-
-  console.log("inside searchController")
+  $scope.buyStock = function(shares){
+    clientFactory.buyStock(shares);
+  }
 });
