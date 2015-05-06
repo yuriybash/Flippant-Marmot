@@ -11,7 +11,7 @@ module.exports = {
 
     // req.session.passport = {}; //REMOVE THIS LATER
     // req.session.passport.user = {};
-    // req.session.passport.user._id = 3; 
+    // req.session.passport.user._id = 3;
     // req.session.passport.user.screen_name = 'obscyuriy3';
     // req.session.passport.user.displayname = 'yuriy 3 bash';
 

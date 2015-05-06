@@ -2,6 +2,7 @@ angular.module('socialStock', [
   'socialStock.auth',
   'socialStock.dash',
   'socialStock.search',
+  'socialStock.factory',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
@@ -19,11 +20,13 @@ angular.module('socialStock', [
       controller: 'AuthController'
     })
     .otherwise({
-      templateUrl: 'app/dashboard/dashboard.html',
-      controller: 'DashController'
+      redirectTo: '/dashboard'
     });
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     // $httpProvider.interceptors.push('AttachTokens');
-});
+})
+.run(function($rootScope, $location){
+  $location.path('/dashboard')
+})

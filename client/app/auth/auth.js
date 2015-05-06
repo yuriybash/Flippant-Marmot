@@ -1,5 +1,5 @@
 angular.module('socialStock.auth', [])
 
-.controller('AuthController', function ($scope, $location, Links) {
+.controller('AuthController', function ($scope, $location) {
   // Your code here
 });
