@@ -59,48 +59,26 @@ module.exports = {
             twitter.getUserInfoHelper(twitterHandleString, function(followersCount){
               //followersCount = [51255152, 2141241]
 
-              console.log("followersCount", followersCount)
               for(var i = 0; i < followersCount.length; i++){
 
-                  for(var j = 0; j < portfolio.stocks.length; j++){
+                portfolio.stocks[i]["current_follower_count"] = followersCount[i];
 
 
-                    console.log("portfolio.stocks[j]:", portfolio.stocks[j]);
-                    console.log("followersCount[i]", followersCount[i])
-
-                      console.log("portfolio.stocks[j][current_follower_count] before", portfolio.stocks[j]["current_follower_count"])
-                      portfolio.stocks[j]["current_follower_count"] = followersCount[i];
-                      console.log("portfolio.stocks[j][current_follower_count] after", portfolio.stocks[j]["current_follower_count"])
-
-                  }
-
+                var currentNumFollowers = followersCount[i];
+                var originalNumFollowers = portfolio.stocks[i].follower_count_at_purchase;
+                var currentDate = new Date();
+                var numDays = Math.abs(Date.parse(currentDate) - Date.parse(portfolio.stocks[i].date_of_purchase))/(1000*60*60*24);
+                var growthRate = Math.pow((currentNumFollowers-originalNumFollowers)/originalNumFollowers, 1/numDays);
+                var growthRateVsExpected = (growthRate - .0007)/.0007;
+                portfolio.stocks[i]["current_price"] = (1+growthRateVsExpected) * (portfolio.stocks[i].follower_count_at_purchase/1000000);
               }
-              console.log("portfolio right before it sends:" + portfolio)
               res.json(portfolio);
 
             })
-
-
+          } else {
+            res.json(portfolio);
           }
-
-
-
-            // console.log("twitterRequest", twitterRequest);
-            // var currentNumFollowers = twitter.getUserInfoHelper(twitterRequest, function(twitterUserData["follower_count_at_query_time"]){
-            //   // console.log("currentNumFollowers", currentNumFollowers)
-            //   var previousFollowers = portfolio.stocks[i].follower_count_at_purchase;
-            //   var numDays = Math.abs(new Date() - portfolio.stocks[i].date_of_purchase)/(1000*60*60*24);
-            //   var growthRate = Math.pow((currentNumFollowers-previousFollowers)/previousFollowers, 1/numDays) - 1;
-            //   var growthRateVsExpected = (growthRate - .0007)/.0007;
-            //   portfolio.stocks[i]["newPrice"] = (1+growthRateVsExpected) * portfolio.stocks[i].price_at_purchase;
-
-
-
-
-          }
-
-          // res.json(portfolio);
-
+        }
       })
       .fail(function(error){
         console.log('error', error);
@@ -219,5 +197,7 @@ module.exports = {
       });
   }
 }
+
+
 
 

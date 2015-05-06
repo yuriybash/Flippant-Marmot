@@ -10,6 +10,7 @@ var PortfolioSchema = new Schema({
   price_at_purchase: Number,
   follower_count_at_purchase: Number,
   current_follower_count: Number,
+  current_price: Number,
   name: String,
   screen_name: String}]
 });
