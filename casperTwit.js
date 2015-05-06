@@ -1,3 +1,5 @@
+// This is a CasperJS script ($ casperjs casperTwit.js)
+
 var fs = require('fs');
 var casper = require('casper').create();
 
