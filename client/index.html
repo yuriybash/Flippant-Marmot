@@ -8,33 +8,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
-<body ng-app='socialStock'>
+<body ng-app'socialStock'>
   <div id='nav'>
-    <div id='logo'>SOCIAL<span class='thick'>CAPITAL</span>
+    <div id='logo'><a href='#/'>SOCIAL<span class='thick'>CAPITAL</span></a>
     <ul id='menu'>
-      <li><a href='/dashboard'>Dash</a></li>
-      <li><a href='/search'>Search</a></li>
-      <li><a href='/auth/twitter'>Login</a></li>
+      <li><a href='#/dashboard'>Dash</a></li>
+      <li><a href='#/search'>Search</a></li>
+      <li><a href='#/logout'>Logout</a></li>
     </ul>
     </div>
   </div>
-  <div ng-view class='view'>
-    <div id='info'>
-      <div class='networth thick'>NET WORTH</div>
-      <div id='cash'>CASH BALANCE</div>
-    </div>
-    <div id='headers'>
-      <div>STOCK</div>
-    </div>
-    <div id='stocks'>
-      <div class='stock'>
-        <div class='image'>img</div>
-        <div class='name'>
-          <div class='username'>username</div>
-          <div class='handle'>@handle</div>
-        </div>
-      </div>
-    </div>
+  <div ng-view>
+
+
+    
   </div>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <script src="app/auth/auth.js"></script>
+    <script src="app/dashboard/dashboard.js"></script>
+    <script src="app/search/search.js"></script>
+    <script src="app/app.js"></script>
 </body>
 </html>

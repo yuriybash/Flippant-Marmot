@@ -1,4 +1,4 @@
 node_modules
-
 server/auth/authConfig.js
 server/external/twitterAPIcredentials.txt
+bower_components

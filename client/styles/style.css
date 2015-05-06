@@ -67,11 +67,21 @@ a:hover{
 }
 .stock {
   color: #B2B3B3;
-  padding: .2em;
+  /*padding: .2em;*/
 }
 .username{
   display: block;
-  font-size: .3em;
+  /*font-size: .3em;*/
+}
+.parent{
+  font-size: .5em;
+}
+.parent div{
+  float: left;
+  display: inline;
+}
+.parent, .parent div div, .parent div button{
+  display: block;
 }
 .image{
   float: left;
