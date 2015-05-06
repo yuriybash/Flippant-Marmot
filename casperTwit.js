@@ -5,6 +5,7 @@ var casper = require('casper').create();
 
 var top100 = JSON.parse(fs.read('top100.json'));
 console.log('top 100: ', top100.data[0]);
+var list = [];
 
 var visitAndReport = function (i) {
   var url = 'http://twittercounter.com/' + top100.data[i].screen_name;
@@ -24,7 +25,10 @@ var visitAndReport = function (i) {
 
     var response = this.evaluate(function () {
       return document.querySelector('#average .up').innerText;
-    })
+    });
+    response = response.replace(/\,/g, '').replace(/ /g, '');
+    list.push({ screen_name: top100.data[i].screen_name, avgDelta: response});
+    fs.write('deltas.json', JSON.stringify(list, null, '\t'), 'w');
     this.echo('count: ' + response);
   });
 
@@ -33,7 +37,7 @@ var visitAndReport = function (i) {
 }
 
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < top100.data.length; i++) {
   visitAndReport(i);
 
 
