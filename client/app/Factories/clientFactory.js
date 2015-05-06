@@ -6,7 +6,7 @@ angular.module('socialStock.factory', [])
 	.factory('clientFactory', function($http){
 
 
-		//gets Twitter stats for a specific handle; 
+		//gets Twitter stats for a specific handle;
 		var getTwitterInfo = function (handle) {
 		    return $http({
 		      method: 'POST',
@@ -25,15 +25,19 @@ angular.module('socialStock.factory', [])
 		      url: '/api/portfolio'
 		    })
 		    .then(function (resp) {
-		    	if(resp.stocks.length > 0){
-			    	for(var i = 0; i < resp.stocks.length; i++){
-			    		console.log("GET PORTFOLIO RESPONSE GOES THROUGH")
-			    		var currentNumFollowers = this.getTwitterInfo({'twitterHandle': resp.stocks[i].screen_name}).follower_count_at_query_time;
-			    		var previousFollowers = resp.stocks[i].follower_count_at_purchase;
-			    		var numDays = Math.abs(new Date() - resp.stocks[i].date_of_purchase)/(1000*60*60*24);
+		    	console.log("initial resp: ", resp.data)
+		    	if(resp.data.stocks && resp.data.stocks.length > 0){
+			    	for(var i = 0; i < resp.data.stocks.length; i++){
+			    		console.log("resp.data.stocks[i].screen_name", resp.data.stocks[i].screen_name);
+			    		var twitterRequest = resp.data.stocks[i].screen_name;
+			    		console.log("twitterRequest", twitterRequest);
+			    		var currentNumFollowers = getTwitterInfo(twitterRequest).follower_count_at_query_time;
+			    		console.log("currentNumFollowers", currentNumFollowers)
+			    		var previousFollowers = resp.data.stocks[i].follower_count_at_purchase;
+			    		var numDays = Math.abs(new Date() - resp.data.stocks[i].date_of_purchase)/(1000*60*60*24);
 			    		var growthRate = Math.pow((currentNumFollowers-previousFollowers)/previousFollowers, 1/numDays) - 1;
 			    		var growthRateVsExpected = (growthRate - .0007)/.0007;
-			    		resp.stocks[i]["newPrice"] = (1+growthRateVsExpected) * resp.stocks[i].price_at_purchase;
+			    		resp.data.stocks[i]["newPrice"] = (1+growthRateVsExpected) * resp.data.stocks[i].price_at_purchase;
 			    	}
 		    	}
 
