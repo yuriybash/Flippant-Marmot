@@ -1,6 +1,6 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var errorHandler = require('errorHandler');
+// var errorHandler = require('errorHandler');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -20,13 +20,15 @@ module.exports = function(app, express){
   app.use(bodyParser.json());
   app.use(express.static(path.join(__dirname,'/../../client')));
 
-  //app.use('/api/users', userRouter);
 
+  app.use('/api/users', userRouter);
   app.use('/api/portfolio', portfolioRouter);
+  app.use('/api/twitter', twitterRouter);
   // app.use(helpers.errorLogger);
   // app.use(helpers.errorHandler);
 
-  //app.use('/api/twitter', twitterRouter);
+
+  app.use('/api/twitter', twitterRouter);
 
   // require('../users/userRoutes.js')(userRouter);
   require('../portfolio/portfolioRoutes.js')(portfolioRouter);
@@ -52,4 +54,5 @@ module.exports = function(app, express){
   // app.get('/auth/facebook/callback', passport.authenticate('facebook',
   //   { successRedirect: '/', failureRedirect: '/login' }
   // ));
+  require("../external/twitterRoutes.js")(twitterRouter);   //injects twitterRouter into twitterRoutes.js
 }
