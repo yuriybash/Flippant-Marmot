@@ -4,7 +4,6 @@ var fs = require('fs');
 var casper = require('casper').create();
 
 var top100 = JSON.parse(fs.read('top100.json'));
-console.log('top 100: ', top100.data[0]);
 var list = [];
 
 var visitAndReport = function (i) {
@@ -16,7 +15,7 @@ var visitAndReport = function (i) {
   }
 
   casper.waitFor(function check() {
-    return this.getCurrentUrl() ===  url
+    return this.getCurrentUrl() === url
   }, function then() {
     this.echo("I'm in twittercounter at index: " + i);
     this.echo('screen name: ' + top100.data[i].screen_name);
@@ -27,8 +26,15 @@ var visitAndReport = function (i) {
       return document.querySelector('#average .up').innerText;
     });
     response = response.replace(/\,/g, '').replace(/ /g, '');
-    list.push({ screen_name: top100.data[i].screen_name, avgDelta: response});
-    fs.write('deltas.json', JSON.stringify(list, null, '\t'), 'w');
+    list.push({
+      screen_name: top100.data[i].screen_name,
+      avgDelta: response
+    });
+    top100.data[i].avgDelta = response;
+    if (i === top100.data.length - 1) {
+      fs.write('deltas.json', JSON.stringify(list, null, '\t'), 'w');
+      fs.write('top100Stats.json', JSON.stringify(top100, null, '\t'), 'w');
+    }
     this.echo('count: ' + response);
   });
 
@@ -39,6 +45,4 @@ var visitAndReport = function (i) {
 
 for (var i = 0; i < top100.data.length; i++) {
   visitAndReport(i);
-
-
 }
