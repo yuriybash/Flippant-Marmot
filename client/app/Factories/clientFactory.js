@@ -7,6 +7,10 @@ angular.module('socialStock.factory', [])
 
 
 		//gets Twitter stats for a specific handle;
+		//takes handle of type "string"
+		//makes POST request with JSON object of form: {"twitterHandle":"katyperry"}
+		// to use getTwitterInfo, input katyperry as 'handle'
+
 		var getTwitterInfo = function (handle) {
 		    return $http({
 		      method: 'POST',

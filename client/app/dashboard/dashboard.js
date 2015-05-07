@@ -5,6 +5,16 @@ angular.module('socialStock.dash', [])
   $scope.data = {};
   // $scope.findPrice;
 
-  $scope.getPortfolio = clientFactory.getPortfolio;
-  $scope.getPortfolio();
+  // $scope.getPortfolio = clientFactory.getPortfolio;
+
+  $scope.portfolio;
+
+  clientFactory.getPortfolio().then(function(data){
+    $scope.portfolio = data.data;
+    console.log($scope.portfolio);
+  })
+
+
 });
+
+
