@@ -1,6 +1,6 @@
 <div id='info'>
-  <div class='networth thick'>NET WORTH</div>
-  <div id='cash'>CASH BALANCE</div>
+  <div class='networth thick'>NET WORTH {{ networth | number:2 }}</div>
+  <div id='cash'>CASH BALANCE {{portfolio.cash_balance | number:2}}</div>
 </div>
 <div id='headers'>
   <div>STOCK</div>

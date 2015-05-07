@@ -10,12 +10,6 @@ module.exports = {
     console.log("display all stocks being called!");
     console.log("req.session.passport LOOKS LIKE: ", req.session.passport)
 
-    // req.session.passport = {}; //REMOVE THIS LATER
-    // req.session.passport.user = {};
-    // req.session.passport.user._id = 3;
-    // req.session.passport.user.screen_name = 'obscyuriy3';
-    // req.session.passport.user.displayname = 'yuriy 3 bash';
-
     if(!req.session.passport){
       console.log("You are not signed in!");
     } else {
@@ -59,6 +53,7 @@ module.exports = {
             twitter.getUserInfoHelper(twitterHandleString, function(followersCount){
               //followersCount = [51255152, 2141241]
 
+
               for(var i = 0; i < followersCount.length; i++){
                 console.log("ADDING NEW FOLLOWER COUNT FOR ONE CELEBRITY: ", portfolio.stocks[i].screen_name);
 
@@ -81,6 +76,7 @@ module.exports = {
                 portfolio.stocks[i]["current_price"] = (1+growthRateVsExpected) * (portfolio.stocks[i].follower_count_at_purchase/1000000);
                 console.log("CURRENT PRICE IS: " + portfolio.stocks[i].current_price);
               }
+
               res.json(portfolio);
 
             })
@@ -96,23 +92,8 @@ module.exports = {
   },
 
   buy: function(req, res, next){
-    // req.session.passport = {}; //REMOVE THIS LATER
-    // req.session.passport.user = {};
-    // req.session.passport.user._id = 3;
-    // req.session.passport.user.screen_name = 'obscyuriy3';
-    // req.session.passport.user.displayname = 'yuriy 3 bash';
 
     var userObj = req.session.passport.user;
-    console.log("inside buy function");
-    // req.body should have:
-    // {
-    //     "screen_name": "@LadyGaga",
-    //     "name": "Lady Gaga ga",
-    //     "follower_count_at_purchase": 12000000,
-    //     "price_at_purchase": 12,
-    //     "date_of_purchase": "Tue May 05 2015 14:11:43 GMT-0700 (PDT)",
-    //     "shares": 100
-    // }
 
     var findPortfolio = Q.nbind(Portfolio.findOne, Portfolio);
 
@@ -130,6 +111,7 @@ module.exports = {
         portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
         portfolio['name'] = req.session.passport.user.displayname;
 
+
         res.json(portfolio);
       })
       .fail(function(error){
@@ -137,15 +119,11 @@ module.exports = {
       });
   },
   sell: function(req, res, next){
-    // req.session.passport = {}; //REMOVE THIS LATER
-    // req.session.passport.user = {};
-    // req.session.passport.user._id = 3;
-    // req.session.passport.user.screen_name = 'obscyuriy3';
-    // req.session.passport.user.displayname = 'yuriy 3 bash';
 
     var userObj = req.session.passport.user;
 
     console.log('req.body: ', req.body);
+    // req.body should pass in
     // at purchase:
     // {
     //     "screen_name": "@LadyGaga",
@@ -203,7 +181,7 @@ module.exports = {
       })
       .fail(function(error){
         console.log(error);
-      });
+   });
   }
 }
 
