@@ -60,17 +60,26 @@ module.exports = {
               //followersCount = [51255152, 2141241]
 
               for(var i = 0; i < followersCount.length; i++){
+                console.log("ADDING NEW FOLLOWER COUNT FOR ONE CELEBRITY: ", portfolio.stocks[i].screen_name);
 
                 portfolio.stocks[i]["current_follower_count"] = followersCount[i];
 
 
                 var currentNumFollowers = followersCount[i];
+                console.log("currentNumFollowers", currentNumFollowers)
                 var originalNumFollowers = portfolio.stocks[i].follower_count_at_purchase;
+                console.log("originmalNumFollowers is: ", originalNumFollowers)
                 var currentDate = new Date();
                 var numDays = Math.abs(Date.parse(currentDate) - Date.parse(portfolio.stocks[i].date_of_purchase))/(1000*60*60*24);
-                var growthRate = Math.pow((currentNumFollowers-originalNumFollowers)/originalNumFollowers, 1/numDays);
+                if(numDays < 1){ numDays = 1 };
+                console.log("numDays", numDays)
+                var growthRate = Math.pow(Math.abs(currentNumFollowers-originalNumFollowers)/originalNumFollowers, 1/numDays);
+                console.log("(currentNumFollowers-originalNumFollowers)/originalNumFollowers", (currentNumFollowers-originalNumFollowers)/originalNumFollowers)
+                console.log("growth function: ", 1/numDays)
                 var growthRateVsExpected = (growthRate - .0007)/.0007;
+                console.log("growthrateVsExpected is: ", growthRateVsExpected)
                 portfolio.stocks[i]["current_price"] = (1+growthRateVsExpected) * (portfolio.stocks[i].follower_count_at_purchase/1000000);
+                console.log("CURRENT PRICE IS: " + portfolio.stocks[i].current_price);
               }
               res.json(portfolio);
 
