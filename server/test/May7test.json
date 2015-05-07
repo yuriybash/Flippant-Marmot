@@ -1,0 +1,33 @@
+{
+	"statusCode": 401,
+	"body": "Unauthorized",
+	"headers": {
+		"x-powered-by": "Express",
+		"content-type": "text/plain; charset=utf-8",
+		"content-length": "12",
+		"etag": "W/\"c-fe5043fd\"",
+		"set-cookie": [
+			"connect.sid=s%3AEx-GDR-GPXeRDEb5-c4bsegMyo3vzPcV.NzQI%2BGNWsrB8t%2BkxTBperguMkqodN6YQ1rlAEkiTiFY; Path=/; HttpOnly"
+		],
+		"date": "Thu, 07 May 2015 17:18:14 GMT",
+		"connection": "close"
+	},
+	"request": {
+		"uri": {
+			"protocol": "http:",
+			"slashes": true,
+			"auth": null,
+			"host": "localhost:3000",
+			"port": "3000",
+			"hostname": "localhost",
+			"hash": null,
+			"search": null,
+			"query": null,
+			"pathname": "/api/portfolio",
+			"path": "/api/portfolio",
+			"href": "http://localhost:3000/api/portfolio"
+		},
+		"method": "GET",
+		"headers": {}
+	}
+}

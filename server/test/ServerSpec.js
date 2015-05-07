@@ -234,6 +234,27 @@ describe('', function() {
       });
     });
 
+    it('Portfolio api returns 401 if not signed in', function(done) {
+      request('http://localhost:3000/api/portfolio', function(error, res, body) {
+        expect(res.statusCode).to.equal(401);
+        done();
+      });
+    });
+
+    it('Twitter api returns 401 if not signed in', function(done) {
+      request('http://localhost:3000/api/twitter', function(error, res, body) {
+        expect(res.statusCode).to.equal(401);
+        done();
+      });
+    });
+
+    it('Users api returns 401 if not signed in', function(done) {
+      request('http://localhost:3000/api/users', function(error, res, body) {
+        expect(res.statusCode).to.equal(401);
+        done();
+      });
+    });
+
   }); // 'Priviledged Access'
 
   xdescribe('Account Creation:', function(){
