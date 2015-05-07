@@ -1,6 +1,4 @@
-var mongoose = require('mongoose');
-require('../users/userModel.js');
-var User = mongoose.model('User');
+var User = require('../users/userModel.js');
 var TwitterStrategy = require('passport-twitter').Strategy;
 
 // API keys configuration file

@@ -1,11 +1,14 @@
 var expect = require('chai').expect;
 var request = require('request');
+// var User = require('../users/userModel.js');
+var fs = require('fs');
+var path = require('path');
 
-var db = require('../app/config');
-var Users = require('../app/collections/users');
-var User = require('../app/models/user');
-var Links = require('../app/collections/links');
-var Link = require('../app/models/link');
+// var db = require('../app/config');
+// var Users = require('../app/collections/users');
+// var User = require('../app/models/user');
+// var Links = require('../app/collections/links');
+// var Link = require('../app/models/link');
 
 /************************************************************/
 // Mocha doesn't have a way to designate pending before blocks.
@@ -21,9 +24,9 @@ describe('', function() {
 
   beforeEach(function() {
     // log out currently signed in user
-    request('http://127.0.0.1:4568/logout', function(error, res, body) {});
+    request('http://localhost:3000/logout', function(error, res, body) {});
 
-    // delete link for roflzoo from db so it can be created later for the test
+/*    // delete link for roflzoo from db so it can be created later for the test
     db.knex('urls')
       .where('url', '=', 'http://www.roflzoo.com/')
       .del()
@@ -56,10 +59,10 @@ describe('', function() {
           type: 'DatabaseError',
           message: 'Failed to create test setup data'
         };
-      });
+      });*/
   });
 
-  describe('Link creation:', function(){
+  xdescribe('Link creation:', function(){
 
     var requestWithSession = request.defaults({jar: true});
 
@@ -71,7 +74,7 @@ describe('', function() {
         var options = {
           'method': 'POST',
           'followAllRedirects': true,
-          'uri': 'http://127.0.0.1:4568/login',
+          'uri': 'http://localhost:3000/login',
           'json': {
             'username': 'Phillip',
             'password': 'Phillip'
@@ -88,7 +91,7 @@ describe('', function() {
     it('Only shortens valid urls, returning a 404 - Not found for invalid urls', function(done) {
       var options = {
         'method': 'POST',
-        'uri': 'http://127.0.0.1:4568/links',
+        'uri': 'http://localhost:3000/links',
         'json': {
           'url': 'definitely not a valid url'
         }
@@ -107,7 +110,7 @@ describe('', function() {
       var options = {
         'method': 'POST',
         'followAllRedirects': true,
-        'uri': 'http://127.0.0.1:4568/links',
+        'uri': 'http://localhost:3000/links',
         'json': {
           'url': 'http://www.roflzoo.com/'
         }
@@ -161,7 +164,7 @@ describe('', function() {
         link = new Link({
           url: 'http://www.roflzoo.com/',
           title: 'Rofl Zoo - Daily funny animal pictures',
-          base_url: 'http://127.0.0.1:4568'
+          base_url: 'http://localhost:3000'
         });
         link.save().then(function(){
           done();
@@ -172,7 +175,7 @@ describe('', function() {
         var options = {
           'method': 'POST',
           'followAllRedirects': true,
-          'uri': 'http://127.0.0.1:4568/links',
+          'uri': 'http://localhost:3000/links',
           'json': {
             'url': 'http://www.roflzoo.com/'
           }
@@ -188,7 +191,7 @@ describe('', function() {
       it('Shortcode redirects to correct url', function(done) {
         var options = {
           'method': 'GET',
-          'uri': 'http://127.0.0.1:4568/' + link.get('code')
+          'uri': 'http://localhost:3000/' + link.get('code')
         };
 
         requestWithSession(options, function(error, res, body) {
@@ -201,7 +204,7 @@ describe('', function() {
       it('Returns all of the links to display on the links page', function(done) {
         var options = {
           'method': 'GET',
-          'uri': 'http://127.0.0.1:4568/links'
+          'uri': 'http://localhost:3000/links'
         };
 
         requestWithSession(options, function(error, res, body) {
@@ -217,67 +220,79 @@ describe('', function() {
 
   describe('Priviledged Access:', function(){
 
-    it('Redirects to login page if a user tries to access the main page and is not signed in', function(done) {
-      request('http://127.0.0.1:4568/', function(error, res, body) {
-        expect(res.req.path).to.equal('/login');
+    it('Redirects to login page if a user tries to access / and is not signed in', function(done) {
+      request('http://localhost:3000/', function(error, res, body) {
+        expect(res.req.path).to.equal('/app/auth/signin.html');  // /login
         done();
       });
     });
 
-    it('Redirects to login page if a user tries to create a link and is not signed in', function(done) {
-      request('http://127.0.0.1:4568/create', function(error, res, body) {
-        expect(res.req.path).to.equal('/login');
-        done();
-      });
-    });
-
-    it('Redirects to login page if a user tries to see all of the links and is not signed in', function(done) {
-      request('http://127.0.0.1:4568/links', function(error, res, body) {
-        expect(res.req.path).to.equal('/login');
+    it('Redirects to login page if a user tries to go to /index.html and is not signed in', function(done) {
+      request('http://localhost:3000/index.html', function(error, res, body) {
+        expect(res.req.path).to.equal('/app/auth/signin.html');
         done();
       });
     });
 
   }); // 'Priviledged Access'
 
-  describe('Account Creation:', function(){
+  xdescribe('Account Creation:', function(){
 
-    it('Signup creates a user record', function(done) {
+    it('Twitter Login creates a user document', function(done) {
       var options = {
-        'method': 'POST',
-        'uri': 'http://127.0.0.1:4568/signup',
+        'method': 'GET',
+        'uri': 'http://localhost:3000/auth/twitter',
+        'timeout': 5000
+        /*,
         'json': {
           'username': 'Svnh',
           'password': 'Svnh'
-        }
+        }*/
       };
 
       request(options, function(error, res, body) {
-        db.knex('users')
-          .where('username', '=', 'Svnh')
-          .then(function(res) {
-            if (res[0] && res[0]['username']) {
-              var user = res[0]['username'];
-            }
-            expect(user).to.equal('Svnh');
-            done();
-          }).catch(function(err) {
-            throw {
-              type: 'DatabaseError',
-              message: 'Failed to create test setup data'
-            };
-          });
+        
+        var filename = path.join(__dirname,'May7test.json');
+        console.log('creating file: ', filename);
+        fs.writeFileSync(filename, JSON.stringify(res, null, '\t'));
+        // console.log('COMPLETED LOGIN REQUEST: ', error, res, body);
+        expect(res.request.host).to.equal('api.twitter.com');
+        done();
+        User.findOne({
+          screen_name: 'FrankBowers24'
+        }, function (err, user) {
+          console.log('ERROR in finding user on login: ', err, user);
+          if (err) throw (err);
+          // console.log('LOGIN no error, user: ', user);
+          expect(user.screen_name).to.equal('FrankBowers24');
+          if (!err && user != null) return done(null, user);
+
+        });
+        // db.knex('users')
+        //   .where('username', '=', 'Svnh')
+        //   .then(function(res) {
+        //     if (res[0] && res[0]['username']) {
+        //       var user = res[0]['username'];
+        //     }
+        //     expect(user).to.equal('Svnh');
+        //     done();
+        //   }).catch(function(err) {
+        //     throw {
+        //       type: 'DatabaseError',
+        //       message: 'Failed to create test setup data'
+        //     };
+        //   });
       });
     });
 
-    it('Signup logs in a new user', function(done) {
+    it('Twitter Login logs in a new user', function(done) {
       var options = {
-        'method': 'POST',
-        'uri': 'http://127.0.0.1:4568/signup',
+        'method': 'GET',
+        'uri': '/auth/twitter'/*,
         'json': {
           'username': 'Phillip',
           'password': 'Phillip'
-        }
+        }*/
       };
 
       request(options, function(error, res, body) {
@@ -288,7 +303,7 @@ describe('', function() {
 
   }); // 'Account Creation'
 
-  describe('Account Login:', function(){
+  xdescribe('Account Login:', function(){
 
     var requestWithSession = request.defaults({jar: true});
 
@@ -304,7 +319,7 @@ describe('', function() {
     it('Logs in existing users', function(done) {
       var options = {
         'method': 'POST',
-        'uri': 'http://127.0.0.1:4568/login',
+        'uri': 'http://localhost:3000/login',
         'json': {
           'username': 'Phillip',
           'password': 'Phillip'
@@ -320,7 +335,7 @@ describe('', function() {
     it('Users that do not exist are kept on login page', function(done) {
       var options = {
         'method': 'POST',
-        'uri': 'http://127.0.0.1:4568/login',
+        'uri': 'http://localhost:3000/login',
         'json': {
           'username': 'Fred',
           'password': 'Fred'
