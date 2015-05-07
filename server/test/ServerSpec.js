@@ -257,70 +257,37 @@ describe('', function() {
 
   }); // 'Priviledged Access'
 
-  xdescribe('Account Creation:', function(){
+  describe('Twitter Login:', function(){
 
-    it('Twitter Login creates a user document', function(done) {
+    /*it('Twitter Login uses api.twitter.com', function(done) {
       var options = {
         'method': 'GET',
         'uri': 'http://localhost:3000/auth/twitter',
         'timeout': 5000
-        /*,
-        'json': {
-          'username': 'Svnh',
-          'password': 'Svnh'
-        }*/
       };
 
       request(options, function(error, res, body) {
         
-        var filename = path.join(__dirname,'May7test.json');
-        console.log('creating file: ', filename);
-        fs.writeFileSync(filename, JSON.stringify(res, null, '\t'));
+        // var filename = path.join(__dirname,'May7test.json');
+        // console.log('creating file: ', filename);
+        // fs.writeFileSync(filename, JSON.stringify(res, null, '\t'));
         // console.log('COMPLETED LOGIN REQUEST: ', error, res, body);
         expect(res.request.host).to.equal('api.twitter.com');
         done();
-        User.findOne({
-          screen_name: 'FrankBowers24'
-        }, function (err, user) {
-          console.log('ERROR in finding user on login: ', err, user);
-          if (err) throw (err);
-          // console.log('LOGIN no error, user: ', user);
-          expect(user.screen_name).to.equal('FrankBowers24');
-          if (!err && user != null) return done(null, user);
-
-        });
-        // db.knex('users')
-        //   .where('username', '=', 'Svnh')
-        //   .then(function(res) {
-        //     if (res[0] && res[0]['username']) {
-        //       var user = res[0]['username'];
-        //     }
-        //     expect(user).to.equal('Svnh');
-        //     done();
-        //   }).catch(function(err) {
-        //     throw {
-        //       type: 'DatabaseError',
-        //       message: 'Failed to create test setup data'
-        //     };
-        //   });
       });
     });
+*/
+    // it('Twitter Login logs in a new user', function(done) {
+    //   var options = {
+    //     'method': 'GET',
+    //     'uri': '/auth/twitter'
+    //   };
 
-    it('Twitter Login logs in a new user', function(done) {
-      var options = {
-        'method': 'GET',
-        'uri': '/auth/twitter'/*,
-        'json': {
-          'username': 'Phillip',
-          'password': 'Phillip'
-        }*/
-      };
-
-      request(options, function(error, res, body) {
-        expect(res.headers.location).to.equal('/');
-        done();
-      });
-    });
+    //   request(options, function(error, res, body) {
+    //     expect(res.headers.location).to.equal('/');
+    //     done();
+    //   });
+    // });
 
   }); // 'Account Creation'
 
