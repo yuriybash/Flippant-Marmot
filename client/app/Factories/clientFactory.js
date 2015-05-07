@@ -12,53 +12,53 @@ angular.module('socialStock.factory', [])
 		// to use getTwitterInfo, input katyperry as 'handle'
 
 		var getTwitterInfo = function (handle) {
-		    return $http({
-		      method: 'POST',
-		      url: '/api/twitter',
-		      data: {twitterHandle:handle}
-		    })
-		    .then(function (resp) {
-		      return resp;
-		    });
-		  };
+	    return $http({
+	      method: 'POST',
+	      url: '/api/twitter',
+	      data: {twitterHandle:handle}
+	    })
+	    .then(function (resp) {
+	      return resp;
+	    });
+	  };
 
 		//gets portfolio for currently logged-in user
 		var getPortfolio = function () {
-		    return $http({
-		      method: 'GET',
-		      url: '/api/portfolio'
-		    })
-		    .then(function (resp) {
-		    	console.log("initial resp: ", resp.data)
+	    return $http({
+	      method: 'GET',
+	      url: '/api/portfolio'
+	    })
+	    .then(function (resp) {
+	    	console.log("initial resp: ", resp.data)
 
-
-		   	  console.log('getPortfolio response: ', resp)
-		      return resp;
-		    });
-		  };
+	   	  console.log('getPortfolio response: ', resp)
+	      return resp;
+	    });
+	  };
 
 
 		  var buyStock = function (stockInfo) {
-		      return $http({
-		        method: 'POST',
-		        url: '/api/portfolio/buy',
-		        data: stockInfo
-		      })
-		      .then(function (resp) {
-		        return resp;
-		      });
-		    };
+		  	console.log(stockInfo);
+	      return $http({
+	        method: 'POST',
+	        url: '/api/portfolio/buy',
+	        data: stockInfo
+	      })
+	      .then(function (resp) {
+	        return resp;
+	      });
+	    };
 
 		  var sellStock = function (stockInfo) {
-		        return $http({
-		          method: 'POST',
-		          url: '/api/portfolio/sell',
-		          data: stockInfo
-		        })
-		        .then(function (resp) {
-		          return resp;
-		        });
-		      };
+        return $http({
+          method: 'POST',
+          url: '/api/portfolio/sell',
+          data: stockInfo
+        })
+        .then(function (resp) {
+          return resp;
+        });
+      };
 
 
 		return {
@@ -68,5 +68,4 @@ angular.module('socialStock.factory', [])
 			sellStock: sellStock
 		}
 
-
-	})
+	});
