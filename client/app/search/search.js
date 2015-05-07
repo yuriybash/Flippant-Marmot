@@ -8,6 +8,17 @@ angular.module('socialStock.search', [])
     });
   };
   $scope.buyStock = function(shares){
-    clientFactory.buyStock(shares);
+    var date = new Date();
+    var purchase = {
+      "screen_name": "@" + $scope.stocks[0].screen_name,
+      "name": $scope.stocks[0].name,
+      "follower_count_at_purchase": $scope.stocks[0].follower_count_at_query_time,
+      "price_at_purchase": $scope.stocks[0].price_at_purchase,
+      "date_of_purchase": date.toString(),
+      "shares": +shares
+    };
+    clientFactory.buyStock(purchase).then(function(data){
+      console.log(data);
+    });
   }
 });

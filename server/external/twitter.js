@@ -21,7 +21,7 @@ module.exports = {
      * @param req - request data for this request
      * @param res - response data for this response
      */
-  getUserInfo: function(req, res, callback) {
+  getUserInfo: function(req, res) {
       var twitterHandle = req.body.twitterHandle;
 
       //response is JSON string of arrays. We will parse first result in it, create JSON from it, and send it back to client.
@@ -42,7 +42,6 @@ module.exports = {
               twitterUserData["name"] = returnedUserData["name"];
               twitterUserData["follower_count_at_query_time"] = returnedUserData["followers_count"];
               twitterUserData["price_at_purchase"] = parseInt(returnedUserData["followers_count"]) / 1000000;
-              callback(twitterUserData["follower_count_at_query_time"]);
               res.json(twitterUserData);
           }
 
