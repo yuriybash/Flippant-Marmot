@@ -27,6 +27,3 @@ angular.module('socialStock', [
     // of interceptors. Think of it like middleware for your ajax calls
     // $httpProvider.interceptors.push('AttachTokens');
 })
-.run(function($rootScope, $location){
-  $location.path('/dashboard')
-})

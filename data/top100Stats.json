@@ -1,0 +1,605 @@
+{
+	"date_scraped": "2015-05-06T14:22:01.305Z",
+	"data": [
+		{
+			"followers_count": "69332630",
+			"name": "KATY PERRY",
+			"screen_name": "katyperry",
+			"avgDelta": "+47652"
+		},
+		{
+			"followers_count": "63319291",
+			"name": "Justin Bieber",
+			"screen_name": "justinbieber",
+			"avgDelta": "+33028"
+		},
+		{
+			"followers_count": "58857454",
+			"name": "Barack Obama",
+			"screen_name": "BarackObama",
+			"avgDelta": "+44289"
+		},
+		{
+			"followers_count": "57127951",
+			"name": "Taylor Swift",
+			"screen_name": "taylorswift13",
+			"avgDelta": "+51257"
+		},
+		{
+			"followers_count": "50616237",
+			"name": "YouTube",
+			"screen_name": "YouTube",
+			"avgDelta": "+20902"
+		},
+		{
+			"followers_count": "46270025",
+			"name": "Lady Gaga",
+			"screen_name": "ladygaga",
+			"avgDelta": "+25182"
+		},
+		{
+			"followers_count": "45015798",
+			"name": "Justin Timberlake",
+			"screen_name": "jtimberlake",
+			"avgDelta": "+37057"
+		},
+		{
+			"followers_count": "44906195",
+			"name": "Rihanna",
+			"screen_name": "rihanna",
+			"avgDelta": "+51000"
+		},
+		{
+			"followers_count": "43006962",
+			"name": "Ellen DeGeneres",
+			"screen_name": "TheEllenShow",
+			"avgDelta": "+41032"
+		},
+		{
+			"followers_count": "41746819",
+			"name": "Britney Spears",
+			"screen_name": "britneyspears",
+			"avgDelta": "+11244"
+		},
+		{
+			"followers_count": "38696097",
+			"name": "Instagram",
+			"screen_name": "instagram",
+			"avgDelta": "+14869"
+		},
+		{
+			"followers_count": "38158217",
+			"name": "Twitter",
+			"screen_name": "twitter",
+			"avgDelta": "+39238"
+		},
+		{
+			"followers_count": "35372606",
+			"name": "Cristiano Ronaldo",
+			"screen_name": "Cristiano",
+			"avgDelta": "+21484"
+		},
+		{
+			"followers_count": "31941923",
+			"name": "Jennifer Lopez",
+			"screen_name": "JLo",
+			"avgDelta": "+11530"
+		},
+		{
+			"followers_count": "31582907",
+			"name": "Kim Kardashian West",
+			"screen_name": "KimKardashian",
+			"avgDelta": "+28865"
+		},
+		{
+			"followers_count": "30831626",
+			"name": "Shakira",
+			"screen_name": "shakira",
+			"avgDelta": "+20638"
+		},
+		{
+			"followers_count": "28798706",
+			"name": "Selena Gomez",
+			"screen_name": "selenagomez",
+			"avgDelta": "+21170"
+		},
+		{
+			"followers_count": "28443874",
+			"name": "Ariana Grande ",
+			"screen_name": "ArianaGrande",
+			"avgDelta": "+37121"
+		},
+		{
+			"followers_count": "28238522",
+			"name": "Demi Lovato",
+			"screen_name": "ddlovato",
+			"avgDelta": "+14020"
+		},
+		{
+			"followers_count": "27354523",
+			"name": "Oprah Winfrey",
+			"screen_name": "Oprah",
+			"avgDelta": "+8288"
+		},
+		{
+			"followers_count": "26474801",
+			"name": "CNN Breaking News",
+			"screen_name": "cnnbrk",
+			"avgDelta": "+27009"
+		},
+		{
+			"followers_count": "26417459",
+			"name": "P!nk",
+			"screen_name": "Pink",
+			"avgDelta": "+7318"
+		},
+		{
+			"followers_count": "24844410",
+			"name": "jimmy fallon",
+			"screen_name": "jimmyfallon",
+			"avgDelta": "+39502"
+		},
+		{
+			"followers_count": "24560728",
+			"name": "Harry Styles.",
+			"screen_name": "Harry_Styles",
+			"avgDelta": "+9607"
+		},
+		{
+			"followers_count": "23456487",
+			"name": "One Direction",
+			"screen_name": "onedirection",
+			"avgDelta": "+10849"
+		},
+		{
+			"followers_count": "22700837",
+			"name": "Lil Wayne WEEZY F",
+			"screen_name": "LilTunechi",
+			"avgDelta": "+14611"
+		},
+		{
+			"followers_count": "22686205",
+			"name": "Drizzy",
+			"screen_name": "Drake",
+			"avgDelta": "+21622"
+		},
+		{
+			"followers_count": "22605819",
+			"name": "Kaka",
+			"screen_name": "KAKA",
+			"avgDelta": "+6547"
+		},
+		{
+			"followers_count": "22584239",
+			"name": "Adele",
+			"screen_name": "OfficialAdele",
+			"avgDelta": "+7383"
+		},
+		{
+			"followers_count": "22221492",
+			"name": "Niall Horan",
+			"screen_name": "NiallOfficial",
+			"avgDelta": "+9166"
+		},
+		{
+			"followers_count": "21749521",
+			"name": "Bill Gates",
+			"screen_name": "BillGates",
+			"avgDelta": "+19667"
+		},
+		{
+			"followers_count": "21713505",
+			"name": "Alicia Keys",
+			"screen_name": "aliciakeys",
+			"avgDelta": "+7649"
+		},
+		{
+			"followers_count": "20892290",
+			"name": "LeBron James",
+			"screen_name": "KingJames",
+			"avgDelta": "+24143"
+		},
+		{
+			"followers_count": "20821970",
+			"name": "Bruno Mars",
+			"screen_name": "BrunoMars",
+			"avgDelta": "+10652"
+		},
+		{
+			"followers_count": "20101352",
+			"name": "Pitbull",
+			"screen_name": "pitbull",
+			"avgDelta": "+8363"
+		},
+		{
+			"followers_count": "20089878",
+			"name": "Liam",
+			"screen_name": "Real_Liam_Payne",
+			"avgDelta": "+8504"
+		},
+		{
+			"followers_count": "19510657",
+			"name": "Cameron",
+			"screen_name": "wizkhalifa",
+			"avgDelta": "+17368"
+		},
+		{
+			"followers_count": "19458898",
+			"name": "Miley Ray Cyrus",
+			"screen_name": "MileyCyrus",
+			"avgDelta": "+2960"
+		},
+		{
+			"followers_count": "19386801",
+			"name": "Louis Tomlinson",
+			"screen_name": "Louis_Tomlinson",
+			"avgDelta": "+8190"
+		},
+		{
+			"followers_count": "19336909",
+			"name": "Marshall Mathers",
+			"screen_name": "Eminem",
+			"avgDelta": "+2313"
+		},
+		{
+			"followers_count": "19225104",
+			"name": "NICKI MINAJ",
+			"screen_name": "NICKIMINAJ",
+			"avgDelta": "+3690"
+		},
+		{
+			"followers_count": "18913738",
+			"name": "Kevin Hart",
+			"screen_name": "KevinHart4real",
+			"avgDelta": "+24945"
+		},
+		{
+			"followers_count": "18778823",
+			"name": "ESPN",
+			"screen_name": "espn",
+			"avgDelta": "+27416"
+		},
+		{
+			"followers_count": "18709434",
+			"name": "Avril Lavigne",
+			"screen_name": "AvrilLavigne",
+			"avgDelta": "+8170"
+		},
+		{
+			"followers_count": "18037337",
+			"name": "Neymar Jr",
+			"screen_name": "neymarjr",
+			"avgDelta": "+13218"
+		},
+		{
+			"followers_count": "17645265",
+			"name": "Emma Watson",
+			"screen_name": "EmWatson",
+			"avgDelta": "+13312"
+		},
+		{
+			"followers_count": "17432650",
+			"name": "David Guetta",
+			"screen_name": "davidguetta",
+			"avgDelta": "+7723"
+		},
+		{
+			"followers_count": "16904451",
+			"name": "SportsCenter",
+			"screen_name": "SportsCenter",
+			"avgDelta": "+28883"
+		},
+		{
+			"followers_count": "16865765",
+			"name": "CNN",
+			"screen_name": "CNN",
+			"avgDelta": "+12302"
+		},
+		{
+			"followers_count": "16860254",
+			"name": "ashton kutcher",
+			"screen_name": "aplusk",
+			"avgDelta": "+2121"
+		},
+		{
+			"followers_count": "16709953",
+			"name": "daniel tosh",
+			"screen_name": "danieltosh",
+			"avgDelta": "+21077"
+		},
+		{
+			"followers_count": "16480612",
+			"name": "The New York Times",
+			"screen_name": "nytimes",
+			"avgDelta": "+14164"
+		},
+		{
+			"followers_count": "16383064",
+			"name": "Conan O'Brien",
+			"screen_name": "ConanOBrien",
+			"avgDelta": "+16850"
+		},
+		{
+			"followers_count": "15787805",
+			"name": "Real Madrid C. F.",
+			"screen_name": "realmadrid",
+			"avgDelta": "+12057"
+		},
+		{
+			"followers_count": "15651855",
+			"name": "Neil Patrick Harris",
+			"screen_name": "ActuallyNPH",
+			"avgDelta": "+23332"
+		},
+		{
+			"followers_count": "15476653",
+			"name": "Mariah Carey",
+			"screen_name": "MariahCarey",
+			"avgDelta": "+1564"
+		},
+		{
+			"followers_count": "14929626",
+			"name": "BBC Breaking News",
+			"screen_name": "BBCBreaking",
+			"avgDelta": "+17859"
+		},
+		{
+			"followers_count": "14884734",
+			"name": "FC Barcelona",
+			"screen_name": "FCBarcelona",
+			"avgDelta": "+8772"
+		},
+		{
+			"followers_count": "14683692",
+			"name": "zaynmalik",
+			"screen_name": "zaynmalik",
+			"avgDelta": "+7246"
+		},
+		{
+			"followers_count": "14667012",
+			"name": "Christina Aguilera",
+			"screen_name": "xtina",
+			"avgDelta": "+6954"
+		},
+		{
+			"followers_count": "14600563",
+			"name": "Coldplay",
+			"screen_name": "coldplay",
+			"avgDelta": "+6548"
+		},
+		{
+			"followers_count": "14528702",
+			"name": "Amitabh Bachchan",
+			"screen_name": "SrBachchan",
+			"avgDelta": "+15845"
+		},
+		{
+			"followers_count": "14317843",
+			"name": "Jim Carrey",
+			"screen_name": "JimCarrey",
+			"avgDelta": "+6217"
+		},
+		{
+			"followers_count": "14243019",
+			"name": "Twitter en español",
+			"screen_name": "twitter_es",
+			"avgDelta": "+1738"
+		},
+		{
+			"followers_count": "14205914",
+			"name": "Chris Brown",
+			"screen_name": "chrisbrown",
+			"avgDelta": "+1895"
+		},
+		{
+			"followers_count": "14204248",
+			"name": "NBA",
+			"screen_name": "NBA",
+			"avgDelta": "+14134"
+		},
+		{
+			"followers_count": "14145931",
+			"name": "Kourtney Kardashian",
+			"screen_name": "kourtneykardash",
+			"avgDelta": "+6178"
+		},
+		{
+			"followers_count": "14001004",
+			"name": "Beyoncé Knowles",
+			"screen_name": "Beyonce",
+			"avgDelta": "+1075"
+		},
+		{
+			"followers_count": "13938939",
+			"name": "Vine",
+			"screen_name": "vine",
+			"avgDelta": "+13126"
+		},
+		{
+			"followers_count": "13930655",
+			"name": "Khloé ",
+			"screen_name": "khloekardashian",
+			"avgDelta": "+11395"
+		},
+		{
+			"followers_count": "13910533",
+			"name": "Facebook",
+			"screen_name": "facebook",
+			"avgDelta": "+55"
+		},
+		{
+			"followers_count": "13525013",
+			"name": "Ed Sheeran",
+			"screen_name": "edsheeran",
+			"avgDelta": "+12818"
+		},
+		{
+			"followers_count": "13449548",
+			"name": "Ryan Seacrest",
+			"screen_name": "RyanSeacrest",
+			"avgDelta": "+2867"
+		},
+		{
+			"followers_count": "13294632",
+			"name": "Paris Hilton",
+			"screen_name": "ParisHilton",
+			"avgDelta": "+1678"
+		},
+		{
+			"followers_count": "13163821",
+			"name": "will.i.am",
+			"screen_name": "iamwill",
+			"avgDelta": "+2770"
+		},
+		{
+			"followers_count": "13041156",
+			"name": "AGNEZ MO",
+			"screen_name": "agnezmo",
+			"avgDelta": "+7702"
+		},
+		{
+			"followers_count": "12846080",
+			"name": "Shah Rukh Khan",
+			"screen_name": "iamsrk",
+			"avgDelta": "+21094"
+		},
+		{
+			"followers_count": "12813282",
+			"name": "AshleyTisdaleFrench",
+			"screen_name": "ashleytisdale",
+			"avgDelta": "+1795"
+		},
+		{
+			"followers_count": "12769680",
+			"name": "Ivete Sangalo",
+			"screen_name": "ivetesangalo",
+			"avgDelta": "+6954"
+		},
+		{
+			"followers_count": "12715537",
+			"name": "Leonardo DiCaprio",
+			"screen_name": "LeoDiCaprio",
+			"avgDelta": "+6718"
+		},
+		{
+			"followers_count": "12491968",
+			"name": "Tyra Banks",
+			"screen_name": "tyrabanks",
+			"avgDelta": "+3694"
+		},
+		{
+			"followers_count": "12428777",
+			"name": "Aamir Khan",
+			"screen_name": "aamir_khan",
+			"avgDelta": "+14849"
+		},
+		{
+			"followers_count": "12412057",
+			"name": "UberSocial ",
+			"screen_name": "UberSoc",
+			"avgDelta": "+3001"
+		},
+		{
+			"followers_count": "12344396",
+			"name": "Alejandro Sanz",
+			"screen_name": "AlejandroSanz",
+			"avgDelta": "+2968"
+		},
+		{
+			"followers_count": "12235646",
+			"name": "MTV",
+			"screen_name": "MTV",
+			"avgDelta": "+2861"
+		},
+		{
+			"followers_count": "12158169",
+			"name": "Snoop Dogg",
+			"screen_name": "SnoopDogg",
+			"avgDelta": "+2593"
+		},
+		{
+			"followers_count": "12150260",
+			"name": "KANYE WEST",
+			"screen_name": "kanyewest",
+			"avgDelta": "+9344"
+		},
+		{
+			"followers_count": "12095932",
+			"name": "Ricky Martin",
+			"screen_name": "ricky_martin",
+			"avgDelta": "+4881"
+		},
+		{
+			"followers_count": "12084356",
+			"name": "Narendra Modi",
+			"screen_name": "narendramodi",
+			"avgDelta": "+26055"
+		},
+		{
+			"followers_count": "12065351",
+			"name": "Ronaldinho Gaúcho",
+			"screen_name": "10Ronaldinho",
+			"avgDelta": "+5376"
+		},
+		{
+			"followers_count": "12029205",
+			"name": "Blake Shelton",
+			"screen_name": "blakeshelton",
+			"avgDelta": "+16703"
+		},
+		{
+			"followers_count": "11891429",
+			"name": "Simon Cowell",
+			"screen_name": "SimonCowell",
+			"avgDelta": "+5772"
+		},
+		{
+			"followers_count": "11805572",
+			"name": "د. محمد العريفي",
+			"screen_name": "MohamadAlarefe",
+			"avgDelta": "+8008"
+		},
+		{
+			"followers_count": "11725508",
+			"name": "Salman Khan",
+			"screen_name": "BeingSalmanKhan",
+			"avgDelta": "+13702"
+		},
+		{
+			"followers_count": "11455188",
+			"name": "Charlie Sheen",
+			"screen_name": "charliesheen",
+			"avgDelta": "+375"
+		},
+		{
+			"followers_count": "11326719",
+			"name": "NFL",
+			"screen_name": "nfl",
+			"avgDelta": "+19717"
+		},
+		{
+			"followers_count": "11156909",
+			"name": "Wayne Rooney",
+			"screen_name": "WayneRooney",
+			"avgDelta": "+5400"
+		},
+		{
+			"followers_count": "11016933",
+			"name": "Claudia Leitte",
+			"screen_name": "ClaudiaLeitte",
+			"avgDelta": "+5325"
+		},
+		{
+			"followers_count": "10959879",
+			"name": "Google",
+			"screen_name": "google",
+			"avgDelta": "+10395"
+		},
+		{
+			"followers_count": "10872099",
+			"name": "Dalai Lama",
+			"screen_name": "DalaiLama",
+			"avgDelta": "+6836"
+		}
+	]
+}
