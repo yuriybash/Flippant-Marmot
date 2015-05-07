@@ -17,7 +17,7 @@
     <div class='delta'>{{ (stock.current_price - (stock.follower_count_at_purchase/1000000)) * stock.shares |number:2}}</div>
     <div class='buttons'>
       <button>BUY</button>
-      <button>SELL</button>
+      <button ng-click="createAndSell(stock.screen_name, stock.name, stock.current_follower_count, stock.current_date, stock.current_price, stock.shares)">SELL</button>
     </div>
   </div>
 </div>
