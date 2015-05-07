@@ -10,7 +10,7 @@ var auth = require('../auth/authPassport');
 
 module.exports = function(app, express){
   app.use(cookieParser('add a secret here'));
-  app.use(session({ secret: 'xyz-qwrty' }));
+  app.use(session({ secret: 'xyz-qwrty', resave: false, saveUninitialized: true }));
 
   var userRouter = express.Router();
   var portfolioRouter = express.Router();
