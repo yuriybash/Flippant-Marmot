@@ -19,22 +19,9 @@ module.exports = function(app, express){
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
-  app.get('/', function(req, res, next) {
-    if (auth.authenticated(req)) {
-       next();
-    } else {
-      res.redirect('/app/auth/signin.html')
-    }
-  });
-  app.use('/index.html', function(req, res, next){
-   if (auth.authenticated(req)) {
-     next();
-   } else {
-     res.redirect('/app/auth/signin.html');
-   }
-  });
+  app.get('/', auth.signInIfNotAuthenticated);
+  app.use('/index.html', auth.signInIfNotAuthenticated);
   app.use(express.static(path.join(__dirname,'/../../client')));
-
 
   app.use('/api/users', auth.authenticate, userRouter);
   app.use('/api/portfolio', auth.authenticate, portfolioRouter);
@@ -48,14 +35,14 @@ module.exports = function(app, express){
   // require('../users/userRoutes.js')(userRouter);
   require('../portfolio/portfolioRoutes.js')(portfolioRouter);
 
-  auth.init(passport);
   // passport initialization
+  auth.init(passport);
   app.use(passport.initialize());
   app.use(passport.session());
   // Passport Routes 
   app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/app/auth/signin.html');
+    res.redirect('/signin.html');
   });
   app.get('/auth/twitter', passport.authenticate('twitter'));
   // app.get('/auth/facebook', passport.authenticate('facebook'));
@@ -66,8 +53,5 @@ module.exports = function(app, express){
     console.log('at /test, session: ', req.session);
     res.send('get /test OK');
   })
-  // app.get('/auth/facebook/callback', passport.authenticate('facebook',
-  //   { successRedirect: '/', failureRedirect: '/login' }
-  // ));
   require("../external/twitterRoutes.js")(twitterRouter);   //injects twitterRouter into twitterRoutes.js
 }
