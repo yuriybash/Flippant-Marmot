@@ -11,6 +11,11 @@ var getAvgDelta = function (data, i, collection) {
     if (status !== 'success') {
       console.log('Unable to access network', url);
     } else {
+      phantom.waitFor(function () {
+        return page.evaluate(function () {
+          return document.querySelector("title") === 'Check Your Twitter Stats - Twitter Counter';
+        })
+      });
       var results = page.evaluate(function () {
         return document.querySelector('#average .up').innerText;
       });
@@ -55,8 +60,8 @@ page.open(url, function (status) {
     });
     var collection = [];
     for (var i = 0; i < 1; i++) {
-      
-          getAvgDelta(results, i, collection);
+
+      getAvgDelta(results, i, collection);
 
     }
     fs.write('newTop100.json', JSON.stringify({
