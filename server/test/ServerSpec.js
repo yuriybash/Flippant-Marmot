@@ -222,14 +222,14 @@ describe('', function() {
 
     it('Redirects to login page if a user tries to access / and is not signed in', function(done) {
       request('http://localhost:3000/', function(error, res, body) {
-        expect(res.req.path).to.equal('/app/auth/signin.html');  // /login
+        expect(res.req.path).to.equal('/signin.html');  // /login
         done();
       });
     });
 
     it('Redirects to login page if a user tries to go to /index.html and is not signed in', function(done) {
       request('http://localhost:3000/index.html', function(error, res, body) {
-        expect(res.req.path).to.equal('/app/auth/signin.html');
+        expect(res.req.path).to.equal('/signin.html');
         done();
       });
     });
