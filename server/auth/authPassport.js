@@ -41,7 +41,7 @@ module.exports = {
           photo: profile.photos[0].value
         });
         user.save(function (err) {
-          console.log('ERROR in user creation on login: ', err);
+          if (err) console.log('ERROR in user creation on login: ', err);
           if (err) throw err;
           done(null, user);
         });
@@ -57,7 +57,7 @@ module.exports = {
       return res.send(401);
     }
   },
-  
+
   authenticated: function (req) {
     return req.session && req.session.passport && req.session.passport.user;
   }
