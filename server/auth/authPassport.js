@@ -4,6 +4,10 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 // API keys configuration file
 var config = require('./AuthConfig');
 
+var authenticated = function (req) {
+  return req.session && req.session.passport && req.session.passport.user;
+}
+
 module.exports = {
   init: function (passport) {
 
@@ -39,7 +43,7 @@ module.exports = {
           photo: profile.photos[0].value
         });
         user.save(function (err) {
-          console.log('ERROR in user creation on login: ', err);
+          if (err) console.log('ERROR in user creation on login: ', err);
           if (err) throw err;
           done(null, user);
         });
@@ -49,15 +53,19 @@ module.exports = {
   },
 
   authenticate: function (req, res, next) {
-    if (req.session && req.session.passport && req.session.passport.user) {
+    if (authenticated(req)) {
       return next();
     } else {
       return res.send(401);
     }
   },
-  
-  authenticated: function (req) {
-    return req.session && req.session.passport && req.session.passport.user;
+
+  signInIfNotAuthenticated: function (req, res, next) {
+    if (authenticated(req)) {
+      next();
+    } else {
+      res.redirect('/signin.html')
+    }
   }
 
 };
