@@ -85,12 +85,15 @@ module.exports = {
                 if(numDays < 1){ numDays = millisecondsBetweenPurchase / (1000 * 60 * 60 * 24) };
                 console.log("numDays or fraction of day: ", numDays)
 
-                var growthRate = Math.pow(((currentNumFollowers-originalNumFollowers) / originalNumFollowers) + 1, 1/numDays) - 1;
+                var growthRate = Math.pow(( Math.abs(currentNumFollowers-originalNumFollowers) / originalNumFollowers) + 1, 1/numDays) - 1;
                 console.log("daily growth rate: ", growthRate)
                 var growthRateVsExpected = (growthRate - .0007)/.0007;
                 console.log("growthrateVsExpected is: ", growthRateVsExpected)
 
                 portfolio.stocks[i]["current_price"] = (1+growthRateVsExpected) * (portfolio.stocks[i].follower_count_at_purchase/1000000);
+                if(portfolio.stocks[i]["current_price"] < 0) {
+                  portfolio.stocks[i]["current_price"] = 0;
+                }
                 console.log("CURRENT PRICE IS: " + portfolio.stocks[i].current_price);
               }
 
@@ -118,35 +121,33 @@ module.exports = {
 
     findPortfolio({user_id: userObj._id})
       .then(function(portfolio){
-        portfolio.cash_balance = portfolio.cash_balance - (req.body.shares * req.body.price_at_purchase);
-        portfolio.stocks.push(req.body);
 
-        // MVP: currently, if you buy more stocks than you can afford, you will restart to the default
-        // cash balance of 10,000 and no stocks
         var overDraft = false;
-        if(portfolio.cash_balance < 0){
+
+        if(portfolio.cash_balance < (req.body.shares * req.body.price_at_purchase)){
           overDraft = true;
-          console.log("You have spent more cash than you have! You will now restart your portfolio at 10,000 cash and no stocks!");
-          portfolio.cash_balance = 10000;
-          portfolio.stocks = [];
+          console.log("Overdraft alert! You cannot purchase this stock!");
         }
 
+        if(!overDraft){
+          portfolio.cash_balance = portfolio.cash_balance - (req.body.shares * req.body.price_at_purchase);
+          portfolio.stocks.push(req.body);
 
-        // To fix: temporary attributes are not attaching to the portfolio being sent
-        portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
-        portfolio['name'] = req.session.passport.user.displayname;
-        if(overDraft) {
-          portfolio['msg'] = "You have spent more cash than you have! You will now restart your portfolio at 10,000 cash and no stocks!"
+          // To fix: temporary attributes are not attaching to the portfolio being sent
+          portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
+          portfolio['name'] = req.session.passport.user.displayname;
+
+          portfolio.save(function(err){
+            if(err){
+              console.log('Error!');
+            }
+          });
+
+          console.log("Portfolio being sent from portfolioController: ", portfolio)
+          res.json(portfolio);
+        } else {
+          res.send("Overdraft! You cannot buy this stock!");
         }
-
-        portfolio.save(function(err){
-          if(err){
-            console.log('Error!');
-          }
-        });
-
-        console.log("Portfolio being sent from portfolioController: ", portfolio)
-        res.json(portfolio);
       })
       .fail(function(error){
         console.log(error);
