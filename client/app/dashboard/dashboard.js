@@ -8,7 +8,7 @@ angular.module('socialStock.dash', [])
     $scope.networth;
 
     $scope.updatePie = function(portfolio) {
-        var MAX_ASSETS = 4;
+        var MAX_ASSETS = pieColors.length - 2;
         var values = [];
         var labels = [];
         var stocks = portfolio.stocks;
@@ -27,7 +27,7 @@ angular.module('socialStock.dash', [])
         assets = assets.sort(function(a, b) {
             return b.value - a.value;
         });
-        console.log('sorted assets: ', JSON.stringify(assets));
+        //console.log('sorted assets: ', JSON.stringify(assets));
         var assetValue = 0;
         for (var i = 0; i < assets.length && i < MAX_ASSETS; i++) {
             values.push(assets[i].value);
@@ -39,8 +39,16 @@ angular.module('socialStock.dash', [])
             values.push(otherValue);
             labels.push('Other');
         }
-        values.unshift(netWorth);
-        console.log('labels: ', labels, 'values: ', values);
+        // values.unshift(netWorth);
+        // console.log('labels: ', labels, 'values: ', values);
+        // console.log('pie colors: ', JSON.stringify(pieColors));
+        var content = [];
+        for (var i = 0; i < values.length; i++) {
+            content.push({label: labels[i], value: values[i], color: pieColors[i]});
+        }
+        pieConfig.data.content = content;
+        // console.log('PIE DATA: ', JSON.stringify(pieConfig, null, '\t'));
+        var pie = new d3pie("pieChart", pieConfig);
     }
 
 
