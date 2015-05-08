@@ -10,7 +10,24 @@ var authenticated = function (req) {
   return req.session && req.session.passport && req.session.passport.user;
 }
 
+/**
+ * Authenticates requests.
+ *
+ * Applies the Twitter authentication strategy to the incoming request
+ * If authentication is successful the user will be logged in
+ * and populated at `req.session.passport` and a session will be
+ * established.  
+ *
+ * @api public
+ */
 module.exports = {
+  /**
+   * Initializes the TwitterStrategy to create a user object if needed
+   * on successful authentication
+   * 
+   * @param {Passport} passport authentication 
+   * @api public
+   */
   init: function (passport) {
 
     // Serialize the user for storing it in the session
@@ -54,6 +71,11 @@ module.exports = {
 
   },
 
+  /**
+   * For authenticating api calls, returns 401 if not authenticated
+   *  
+   * @api public
+   */
   authenticate: function (req, res, next) {
     if (authenticated(req)) {
       return next();
@@ -62,6 +84,11 @@ module.exports = {
     }
   },
 
+  /**
+   * For protecting static assets, redirects to /signin.html
+   *  
+   * @api public
+   */
   signInIfNotAuthenticated: function (req, res, next) {
     if (authenticated(req)) {
       next();

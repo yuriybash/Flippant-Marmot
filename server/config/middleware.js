@@ -1,13 +1,20 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-// var errorHandler = require('errorHandler');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
 var auth = require('../auth/authPassport');
-// var helpers = require('./helpers.js');
 
+/**
+ * Core Middleware
+ *
+ * Sets up top-level routes, authentication, and session initialization
+ *
+ * @param {Application} app - Express Application
+ * @param {Express} express
+ * @api public
+ */
 module.exports = function(app, express){
   app.use(cookieParser('add a secret here'));
   app.use(session({ secret: 'xyz-qwrty', resave: false, saveUninitialized: true }));
@@ -26,16 +33,12 @@ module.exports = function(app, express){
   app.use('/api/users', auth.authenticate, userRouter);
   app.use('/api/portfolio', auth.authenticate, portfolioRouter);
   app.use('/api/twitter', auth.authenticate, twitterRouter);
-  // app.use(helpers.errorLogger);
-  // app.use(helpers.errorHandler);
-
 
   app.use('/api/twitter', twitterRouter);
 
-  // require('../users/userRoutes.js')(userRouter);
   require('../portfolio/portfolioRoutes.js')(portfolioRouter);
 
-  // passport initialization
+  // Passport initialization
   auth.init(passport);
   app.use(passport.initialize());
   app.use(passport.session());
@@ -45,7 +48,6 @@ module.exports = function(app, express){
     res.redirect('/signin.html');
   });
   app.get('/auth/twitter', passport.authenticate('twitter'));
-  // app.get('/auth/facebook', passport.authenticate('facebook'));
   app.get('/auth/twitter/callback', passport.authenticate('twitter',
     { successRedirect: '/', failureRedirect: '/login' }
   ));
