@@ -1,5 +1,5 @@
 // handles functions for dashboard display, stock purchases, and stock sales from the portfolio db
-// MVP will have option to buy a stock once, but can sell on multiple dates
+// MVP will have option to buy a stock once, but can sell stocks on multiple dates
 
 var Portfolio = require('./PortfolioModel.js');
 var Q = require('q');
@@ -14,7 +14,7 @@ module.exports = {
       console.log("You are not signed in!");
     } else {
 
-    var userObj = req.session.passport.user; // to be changed
+    var userObj = req.session.passport.user;
     var create, newPortfolio;
 
     var findPortfolio = Q.nbind(Portfolio.findOne, Portfolio);
@@ -29,6 +29,7 @@ module.exports = {
           }
           create(newPortfolio);
 
+          // To fix: temporary attributes are not attaching to the portfolio being sent
           newPortfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
           newPortfolio['name'] = req.session.passport.user.displayname;
 
@@ -53,26 +54,42 @@ module.exports = {
             twitter.getUserInfoHelper(twitterHandleString, function(followersCount){
               //followersCount = [51255152, 2141241]
 
+              // This following block of code represents our pricing algorithm. The stock price
+              // increases or decreases according to the growth of their follower count compared
+              // to the benchmark, which we deem as .0007, or 7% or 1%, or 7 basis points.
+              // If they grow at the faster pace than .0007 then their stock price increases,
+              // if they grow slower, then their stock price decreases.
+              // This benchmark has been chosen by calculating the average follower growth rate
+              // from the top 100 twitter accounts.
 
               for(var i = 0; i < followersCount.length; i++){
                 console.log("ADDING NEW FOLLOWER COUNT FOR ONE CELEBRITY: ", portfolio.stocks[i].screen_name);
 
                 portfolio.stocks[i]["current_follower_count"] = followersCount[i];
 
-
                 var currentNumFollowers = followersCount[i];
                 console.log("currentNumFollowers", currentNumFollowers)
                 var originalNumFollowers = portfolio.stocks[i].follower_count_at_purchase;
                 console.log("originmalNumFollowers is: ", originalNumFollowers)
+
                 var currentDate = new Date();
                 var numDays = Math.abs(Date.parse(currentDate) - Date.parse(portfolio.stocks[i].date_of_purchase))/(1000*60*60*24);
-                if(numDays < 1){ numDays = 1 };
-                console.log("numDays", numDays)
-                var growthRate = Math.pow(Math.abs(currentNumFollowers-originalNumFollowers)/originalNumFollowers, 1/numDays);
-                console.log("(currentNumFollowers-originalNumFollowers)/originalNumFollowers", (currentNumFollowers-originalNumFollowers)/originalNumFollowers)
-                console.log("growth function: ", 1/numDays)
+                var millisecondsBetweenPurchase = Math.abs(Date.parse(currentDate) - Date.parse(portfolio.stocks[i].date_of_purchase));
+
+                console.log("millisecondsBetweenPurchase: ", millisecondsBetweenPurchase);
+
+                // numDays is annualized daily, if not a full day has passed, we use the milliseconds that have passed divided by the milliseconds per day
+                // then we use this to annualize the stock's current growth rate to an assumed daily value.
+                // in simple terms: if the stock grows by 2 users in 10 seconds, we will assume the stock will keep
+                // growing 2 users every 10 seconds for the first day. Then compare that against the benchmark.
+                if(numDays < 1){ numDays = millisecondsBetweenPurchase / (1000 * 60 * 60 * 24) };
+                console.log("numDays or fraction of day: ", numDays)
+
+                var growthRate = Math.pow(((currentNumFollowers-originalNumFollowers) / originalNumFollowers) + 1, 1/numDays) - 1;
+                console.log("daily growth rate: ", growthRate)
                 var growthRateVsExpected = (growthRate - .0007)/.0007;
                 console.log("growthrateVsExpected is: ", growthRateVsExpected)
+
                 portfolio.stocks[i]["current_price"] = (1+growthRateVsExpected) * (portfolio.stocks[i].follower_count_at_purchase/1000000);
                 console.log("CURRENT PRICE IS: " + portfolio.stocks[i].current_price);
               }
@@ -97,10 +114,30 @@ module.exports = {
 
     var findPortfolio = Q.nbind(Portfolio.findOne, Portfolio);
 
+    console.log("INSIDE BUY FUNCTION");
+
     findPortfolio({user_id: userObj._id})
       .then(function(portfolio){
         portfolio.cash_balance = portfolio.cash_balance - (req.body.shares * req.body.price_at_purchase);
         portfolio.stocks.push(req.body);
+
+        // MVP: currently, if you buy more stocks than you can afford, you will restart to the default
+        // cash balance of 10,000 and no stocks
+        var overDraft = false;
+        if(portfolio.cash_balance < 0){
+          overDraft = true;
+          console.log("You have spent more cash than you have! You will now restart your portfolio at 10,000 cash and no stocks!");
+          portfolio.cash_balance = 10000;
+          portfolio.stocks = [];
+        }
+
+
+        // To fix: temporary attributes are not attaching to the portfolio being sent
+        portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
+        portfolio['name'] = req.session.passport.user.displayname;
+        if(overDraft) {
+          portfolio['msg'] = "You have spent more cash than you have! You will now restart your portfolio at 10,000 cash and no stocks!"
+        }
 
         portfolio.save(function(err){
           if(err){
@@ -108,10 +145,7 @@ module.exports = {
           }
         });
 
-        portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
-        portfolio['name'] = req.session.passport.user.displayname;
-
-
+        console.log("Portfolio being sent from portfolioController: ", portfolio)
         res.json(portfolio);
       })
       .fail(function(error){
@@ -165,6 +199,7 @@ module.exports = {
         console.log("portfolio.stocks[1].shares outside for loop: ", portfolio.stocks[1])
         console.log("new portfolio right before sale: ", portfolio);
 
+        // To fix: temporary attributes are not attaching to the portfolio being sent
         portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
         portfolio['name'] = req.session.passport.user.displayname;
 
