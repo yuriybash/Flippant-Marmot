@@ -171,6 +171,9 @@ input{
   padding: .5em 1em;
   margin-right: -5px;
 }
+.red{
+  color: red;
+}
 
 /* login page */
 #login{
