@@ -3,12 +3,16 @@ angular.module('socialStock.dash', [])
 .controller('DashController', function($scope, $http, clientFactory) {
     console.log("inside DashController!")
 
-    // $scope.getPortfolio = clientFactory.getPortfolio;
 
     $scope.portfolio;
     $scope.networth;
 
 
+    /**
+     * This function refreshes the dashboard with the user's most recent portfolio data.
+     * It uses the getPortfolio function in the clientFactory factory.
+     * Asynchronous.
+     */
     $scope.refresh = function() {
         clientFactory.getPortfolio().then(function(data) {
             $scope.portfolio = data.data;
@@ -21,6 +25,16 @@ angular.module('socialStock.dash', [])
         })
     }
 
+
+    /**
+     * This function sells a given stock when the user chooses to do from the dashboard.
+     *  @param {String} sn - screen_name of stock to sell
+     *  @param {String} name - name of stock to sell
+     *  @param {String} cfc - current follower count of stock to sell
+     *  @param {Date} cd - current date
+     *  @param {Number} cp - current price of stock to sell
+     *  @param {Number} s - number of stocks to sell
+     */
     $scope.createAndSell = function(sn, name, cfc, cd, cp, s) {
 
         var stockToSell = {

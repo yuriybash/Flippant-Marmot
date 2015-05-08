@@ -168,21 +168,43 @@ describe("clientFactory", function() {
 
 
 describe('DashController', function() {
-    var scope; //we'll use this scope in our tests
+    var scope;
 
-    //mock Application to allow us to inject our own dependencies
+
     beforeEach(angular.mock.module('socialStock'));
-    //mock the controller for the same reason and include $rootScope and $controller
     beforeEach(angular.mock.inject(function($rootScope, $controller) {
-        //create an empty scope
         scope = $rootScope.$new();
-        //declare the controller and inject our empty scope
         $controller('DashController', {
             $scope: scope
         });
     }));
 
-    it('true should equal true', function() {
-        expect(true).toBe(true);
+    it('Dashcontroller scope variables should be initialized correctly', function() {
+        expect(scope.portfolio).toBeUndefined();
+        expect(scope.networth).toBeUndefined();
+        expect(scope.refresh).toBeDefined();
+        expect(scope.createAndSell).toBeDefined();
+        spyOn(scope, 'refresh');
+    })
+});
+
+describe('SearchController', function() {
+    var scope;
+
+
+    beforeEach(angular.mock.module('socialStock'));
+    beforeEach(angular.mock.inject(function($rootScope, $controller) {
+        scope = $rootScope.$new();
+        $controller('SearchController', {
+            $scope: scope
+        });
+    }));
+
+    it('SearchController scope variables should be initialized correctly', function() {
+        expect(scope.search).toBeDefined();
+        expect(scope.buyStock).toBeDefined();
+
+
+
     })
 });

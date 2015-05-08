@@ -16,10 +16,9 @@ var client = new Twitter({
 module.exports = {
 
     /**
-     * This function returns Twitter data for one given handle.
-     * @constructor
-     * @param req - request data for this request
-     * @param res - response data for this response
+     * This function returns Twitter data for a POST request. The data in the POST must be of the form {"twitterHandle": "barackobama"}
+     * @param {Object} req - request data for this request
+     * @param {Object} res - response data for this response
      */
   getUserInfo: function(req, res) {
       var twitterHandle = req.body.twitterHandle;
@@ -50,6 +49,13 @@ module.exports = {
 
   },
 
+
+  /**
+   * This function returns Twitter data for one or more Twitter handles in the form of a comma-separated string. 
+   * Similar to getUserInfo, but for Strings, not HTTP requests.
+   * @param {String} twitterHandles - the handles to look up (e.g. "barackobama, katyperry")
+   * @param {Function} callback - function to execute on results of query
+   */
   getUserInfoHelper: function(twitterHandles, callback){
     client.get('users/lookup', {
         'screen_name': twitterHandles
