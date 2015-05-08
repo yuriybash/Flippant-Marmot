@@ -22,5 +22,7 @@ angular.module('socialStock.search', [])
       console.log("Data received from buyStock: ", data);
     });
     $scope.shares = '';
+
+    console.log("stock purchase:", purchase)
   }
 });
