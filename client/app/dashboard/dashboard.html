@@ -1,13 +1,13 @@
 <div id='info'>
-  <div class='networth thick'>NET WORTH <span class='right'>{{ networth | number:2 }}</span></div>
+  <div class='networth'>NET WORTH <span class='right'>{{ networth | number:2 }}</span></div>
   <div id='cash'>CASH BALANCE <span class='right' ng-class="{ red: portfolio.cash_balance < 0 }">{{portfolio.cash_balance | number:2}}</span></div>
 </div>
 <div id='dashheaders'>
   <div>STOCK</div>
   <div># OF SHARES</div>
   <div>SHARE PRICE</div>
-  <div>GAIN/LOSS</div>
   <div>STOCK</div>
+  <div>GAIN/LOSS</div>
   <div>SELL</div>
 </div>
 <div id='stocks'>
