@@ -1,81 +1,62 @@
 angular.module('socialStock.dash', [])
 
-.controller('DashController', function ($scope, $http, clientFactory) {
-  console.log("inside DashController!")
-  $scope.data = {};
-  // $scope.findPrice;
+.controller('DashController', function($scope, $http, clientFactory) {
+    console.log("inside DashController!")
 
-  // $scope.getPortfolio = clientFactory.getPortfolio;
 
-  $scope.portfolio;
-  $scope.networth;
+    $scope.portfolio;
+    $scope.networth;
 
-  clientFactory.getPortfolio().then(function(data){
-    $scope.portfolio = data.data;
 
-    $scope.networth = 0;
-    for(var i = 0; i < data.data.stocks.length; i++){
-      $scope.networth+= data.data.stocks[i].current_price * data.data.stocks[i].shares;
+    /**
+     * This function refreshes the dashboard with the user's most recent portfolio data.
+     * It uses the getPortfolio function in the clientFactory factory.
+     * Asynchronous.
+     */
+    $scope.refresh = function() {
+        clientFactory.getPortfolio().then(function(data) {
+            $scope.portfolio = data.data;
+
+            $scope.networth = 0;
+            for (var i = 0; i < data.data.stocks.length; i++) {
+                $scope.networth += data.data.stocks[i].current_price * data.data.stocks[i].shares;
+            }
+            $scope.networth += $scope.portfolio.cash_balance;
+        })
     }
-    $scope.networth += $scope.portfolio.cash_balance;
-  })
 
-  $scope.refresh = function(){
-    clientFactory.getPortfolio().then(function(data){
-      $scope.portfolio = data.data;
 
-      $scope.networth = 0;
-      for(var i = 0; i < data.data.stocks.length; i++){
-        $scope.networth+= data.data.stocks[i].current_price * data.data.stocks[i].shares;
-      }
-      $scope.networth += $scope.portfolio.cash_balance;
-    })
-  }
+    /**
+     * This function sells a given stock when the user chooses to do from the dashboard.
+     *  @param {String} sn - screen_name of stock to sell
+     *  @param {String} name - name of stock to sell
+     *  @param {String} cfc - current follower count of stock to sell
+     *  @param {Date} cd - current date
+     *  @param {Number} cp - current price of stock to sell
+     *  @param {Number} s - number of stocks to sell
+     */
+    $scope.createAndSell = function(sn, name, cfc, cd, cp, s) {
 
-  $scope.sell = function(sellStockInfo){
+        var stockToSell = {
+            "screen_name": sn,
+            "name": name,
+            "current_follower_count": cfc,
+            "current_date": cd,
+            "current_price": cp,
+            "shares": s
 
-    clientFactory.sellStock(sellStockInfo).then(function(data){
-      $scope.portfolio = data.data
+        }
 
-      // $scope.networth = 0;
-      // for(var i = 0; i < data.data.stocks.length; i++){
-      //   console.log("data.data.stocks[i].current_price", data.data.stocks[i].current_price);
-      //   console.log("data.data.stocks[i].shares", data.data.stocks[i].shares)
-      //   $scope.networth+= data.data.stocks[i].current_price * data.data.stocks[i].shares;
-      //   console.log("$scope.networth", $scope.networth)
-      // }
-      // console.log("$scope.networth", $scope.networth)
-      // $scope.networth += $scope.portfolio.cash_balance;
-      $scope.refresh();
-    })
-  };
+        clientFactory.sellStock(stockToSell).then(function(data) {
+            $scope.portfolio = data.data
 
-  var date = new Date();
+            $scope.refresh();
+        })
 
-  $scope.createAndSell = function(sn, name, cfc, cd, cp, s){
-
-    var stockToSell = {
-        "screen_name": sn,
-        "name": name,
-        "current_follower_count": cfc,
-        "current_date": cd,
-        "current_price": cp,
-        "shares": s
 
     }
 
-    $scope.sell(stockToSell);
 
+    $scope.refresh();
 
-  }
-
-//   $scope.sellStockInfo = {
-//     "screen_name": $scope.stock.screen_name,
-//     "name": $scope.stock.name,
-//     "current_follower_count": 15000000,
-//     "current_date": date,
-//     "current_price": 15,
-//     "shares": 20 // need drop down menu!
-//   }
 });
-
