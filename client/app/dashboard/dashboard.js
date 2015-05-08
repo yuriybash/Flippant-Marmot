@@ -48,6 +48,11 @@ angular.module('socialStock.dash', [])
         }
         pieConfig.data.content = content;
         // console.log('PIE DATA: ', JSON.stringify(pieConfig, null, '\t'));
+         var pie = document.querySelector('svg');
+         if (pie) {
+             console.log('old pie removed');
+             pie.parentNode.removeChild(pie);
+         }
         var pie = new d3pie("pieChart", pieConfig);
     }
 
