@@ -29,7 +29,11 @@ angular.module('socialStock.search', [])
       "shares": +shares
     };
     clientFactory.buyStock(purchase).then(function(data){
-    $location.path('/dashboard');
+      console.log("Data received from portfolio controller to search.js: ", data)
+        if(data.data = "Overdraft! You cannot buy this stock!") {
+          alert("Overdraft! You cannot buy this stock!");
+        }
+        $location.path('/dashboard');
     });
   }
 });
