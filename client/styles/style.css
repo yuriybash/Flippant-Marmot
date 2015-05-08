@@ -23,11 +23,12 @@ body{
   font-size: 3em;
   top: 0;
   left: 0;
-  font-family: OstrichLight;
+  font-family: sans-serif;
 }
 
 /* navigation */
 #nav{
+  font-family: OstrichLight;
   z-index: 10;
   padding: .1em .4em;
   width: 100%;
