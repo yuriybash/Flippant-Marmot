@@ -1,4 +1,6 @@
 var app = require('./server/server.js')
 
-app.listen(3000);
-console.log("Now listening on port 3000")
+var port = process.env.PORT || 3000;
+
+app.listen(port);
+console.log("Now listening on port", port)
