@@ -19,6 +19,7 @@ angular.module('socialStock.search', [])
       "shares": +shares
     };
     clientFactory.buyStock(purchase).then(function(data){
+      console.log("Data received from buyStock: ", data);
     });
     $scope.shares = '';
   }
