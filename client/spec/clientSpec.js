@@ -208,3 +208,31 @@ describe('SearchController', function() {
 
     })
 });
+
+
+describe('Routing', function () {
+  var $route;
+  beforeEach(module('socialStock'));
+
+  beforeEach(inject(function($injector){
+    $route = $injector.get('$route');
+  }));
+
+  it('Should have /dashboard route, template, and controller', function () {
+    expect($route.routes['/dashboard']).to.be.ok();
+    expect($route.routes['/dashboard'].controller).to.be('DashController');
+    expect($route.routes['/dashboard'].templateUrl).to.be('app/dashboard/dashboard.html');
+  });
+
+  it('Should have /search route, template, and controller', function () {
+    expect($route.routes['/search']).to.be.ok();
+    expect($route.routes['/search'].controller).to.be('SearchController');
+    expect($route.routes['/search'].templateUrl).to.be('app/search/search.html');
+  });
+
+  it('Should have /logout route, template, and controller', function () {
+    expect($route.routes['/logout']).to.be.ok();
+    expect($route.routes['/logout'].controller).to.be('AuthController');
+    expect($route.routes['/logout'].templateUrl).to.be('app/auth/auth.html');
+  });
+});
