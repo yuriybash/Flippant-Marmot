@@ -45,15 +45,16 @@ var pieConfig = {
 			"fontSize": 16
 		},
 		"mainLabel": {
-			"fontSize": 16
+			"fontSize": 18
 		},
 		"percentage": {
 			"color": "#ffffff",
+			"fontSize": 18,
 			"decimalPlaces": 0
 		},
 		"value": {
 			"color": "#adadad",
-			"fontSize": 16
+			"fontSize": 18
 		},
 		"lines": {
 			"enabled": true
@@ -61,6 +62,11 @@ var pieConfig = {
 		"truncation": {
 			"enabled": true
 		}
+	},
+	"tooltips": {
+		"enabled": true,
+		"type": "placeholder",
+		"string": "{label}: {value}, {percentage}%"
 	},
 	"effects": {
 		"pullOutSegmentOnClick": {

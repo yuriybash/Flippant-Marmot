@@ -15,12 +15,13 @@ angular.module('socialStock.dash', [])
         var netWorth = portfolio.cash_balance;
         var stockValue = 0;
         var assets = [];
-        values.push(portfolio.cash_balance);
+        values.push(+portfolio.cash_balance.toFixed(2));
         labels.push('Cash');
         // put all the stock assets in a name/value array
         for (var i = 0; i < portfolio.stocks.length; i++) {
             stockValue = stocks[i].current_price * stocks[i].shares;
             netWorth += stockValue;
+            stockValue = +stockValue.toFixed(2);
             assets.push({name: stocks[i].screen_name, value: stockValue});
         }
         // sort by descending value
