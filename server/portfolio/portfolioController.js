@@ -1,7 +1,7 @@
 // handles functions for dashboard display, stock purchases, and stock sales from the portfolio db
 // MVP will have option to buy a stock once, but can sell stocks on multiple dates
 
-var Portfolio = require('./PortfolioModel.js');
+var Portfolio = require('./portfolioModel.js');
 var Q = require('q');
 var twitter = require("../external/twitter.js")
 
