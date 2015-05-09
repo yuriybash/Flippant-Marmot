@@ -129,24 +129,37 @@ module.exports = {
           console.log("Overdraft alert! You cannot purchase this stock!");
         }
 
-        if(!overDraft){
-          portfolio.cash_balance = portfolio.cash_balance - (req.body.shares * req.body.price_at_purchase);
-          portfolio.stocks.push(req.body);
+        // In this MVP version, users cannot buy multiple instances of the same stock.
+        // Below is the code to stop purchases of stock they already own.
+        var purchaseOfSameStock = false;
+        for(var i = 0; i < portfolio.stocks.length; i++){
+          if(portfolio.stocks[i].screen_name === req.body.screen_name){
+            purchaseOfSameStock = true;
+          }
+        }
 
-          // To fix: temporary attributes are not attaching to the portfolio being sent
-          portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
-          portfolio['name'] = req.session.passport.user.displayname;
-
-          portfolio.save(function(err){
-            if(err){
-              console.log('Error!');
-            }
-          });
-
-          console.log("Portfolio being sent from portfolioController: ", portfolio)
-          res.json(portfolio);
+        if(purchaseOfSameStock){
+          res.send("In this version, you cannot buy the same stock twice. Try again.");
         } else {
-          res.send("Overdraft! You cannot buy this stock!");
+          if(!overDraft){
+            portfolio.cash_balance = portfolio.cash_balance - (req.body.shares * req.body.price_at_purchase);
+            portfolio.stocks.push(req.body);
+
+            // To fix: temporary attributes are not attaching to the portfolio being sent
+            portfolio['user_twitter_handle'] = req.session.passport.user.screen_name;
+            portfolio['name'] = req.session.passport.user.displayname;
+
+            portfolio.save(function(err){
+              if(err){
+                console.log('Error!');
+              }
+            });
+
+            console.log("Portfolio being sent from portfolioController: ", portfolio)
+            res.json(portfolio);
+          } else {
+            res.send("Overdraft! You cannot buy this stock!");
+          }
         }
       })
       .fail(function(error){
