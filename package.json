@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/nodemon --ignore node_modules index.js",
     "test": "node index.js& ./node_modules/.bin/mocha --bail --reporter nyan server/test/ServerSpec.js; pkill -n node;",
-    "postinstall": "bower cache clean && bower install"
+    "postinstall": "bower cache clean && ./client/bower install"
   },
   "repository": {
     "type": "git",
