@@ -33,6 +33,10 @@ angular.module('socialStock.search', [])
         if(data.data === "Overdraft! You cannot buy this stock!") {
           alert("Overdraft! You cannot buy this stock!");
         }
+        if(data.data === "In this version, you cannot buy the same stock twice. Try again.") {
+          alert("In this version, you cannot buy the same stock twice. Try again.");
+        }
+        
         $location.path('/dashboard');
     });
   }
