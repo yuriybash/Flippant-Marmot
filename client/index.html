@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en' ng-app='socialStock'>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Social</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body>
+  <div id='nav'>
+    <div id='logo'>SOCIAL<span class='thick'>CAPITAL</span>
+    <ul id='menu'>
+      <li><a href='#/dashboard'>Dash</a></li>
+      <li><a href='#/search'>Search</a></li>
+      <li><a href='/logout'>Logout</a></li>
+    </ul>
+    </div>
+  </div>
+
+  <div ng-view> </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+
+  <script src="app/Factories/clientFactory.js"></script>
+  <script src="app/auth/auth.js"></script>
+  <script src="app/dashboard/dashboard.js"></script>
+  <script src="app/search/search.js"></script>
+  <script src="app/app.js"></script>
+</body>
+</html>

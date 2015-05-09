@@ -1,0 +1,26 @@
+<div id='search'>
+  <form>
+    <button ng-click='search(searchTerm)'>search</button>
+    <input type='text' ng-model='searchTerm' placeholder='Input Twitter Handle'>
+  </form>
+</div>
+<div id='searchheaders'>
+  <div>STOCK</div>
+  <div>FOLLOWERS</div>
+  <div>SHARE PRICE</div>
+  <div>BUY</div>
+</div>
+<div id='stocks'>
+  <div class='stock parent search' ng-repeat='stock in stocks'>
+    <div class='searchwidth'>
+      <div>{{ stock.name }}</div>
+      <div class='handle'>@{{ stock.screen_name }}</div>
+    </div>
+    <div class='searchwidth'>{{ stock.follower_count_at_query_time }}</div>
+    <div class='searchwidth'>{{ stock.price_at_purchase | number:2}}</div>
+    <div class='searchwidth'>
+      <button ng-click='buyStock(shareCount)'>BUY</button>
+      <input type='text' ng-model='shareCount' placeholder='shares'>
+    </div>
+  </div>
+</div>

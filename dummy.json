@@ -8,15 +8,15 @@
     screen_name: 'KatyPerry',
     name: 'Katy Perry',
     follower_count_at_purchase: 69000000,
-    price_at_purchase: 1374.00,
+    price_at_purchase: 69.00,
     date_of_purchase: timestamp,
     shares: 12
     },
     {
-    screen_name: 'KatyPerry',
-    name: 'Katy Perry',
-    follower_count_at_purchase: 69000000,
-    price_at_purchase: 1374.00,
+    screen_name: 'BarackObama',
+    name: 'Barack Obama',
+    follower_count_at_purchase: 55000000,
+    price_at_purchase: 55.00,
     date_of_purchase: timestamp,
     shares: 12
     }
