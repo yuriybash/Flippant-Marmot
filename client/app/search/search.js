@@ -30,7 +30,7 @@ angular.module('socialStock.search', [])
     };
     clientFactory.buyStock(purchase).then(function(data){
       console.log("Data received from portfolio controller to search.js: ", data)
-        if(data.data = "Overdraft! You cannot buy this stock!") {
+        if(data.data === "Overdraft! You cannot buy this stock!") {
           alert("Overdraft! You cannot buy this stock!");
         }
         $location.path('/dashboard');
