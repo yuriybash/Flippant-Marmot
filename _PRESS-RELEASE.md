@@ -16,43 +16,33 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 # Project Name #
-Facebook Stocking
-
+  Social Capital
 
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
-    A social media stock market.
+  A social media stock market.
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
   Invest digital currency in trending social media accounts.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
   Build virtual wealth by investing in your favorite social stocks (or social media accounts). Social media account values are scored based on followers, retweets, instagram likes, and github stars. Users can buy or sell their favorite social stocks and the value of their social stock portfolio will grow as their investment(i.e. the social stocks) grows.
 
 ## Problem ##
-  > Describe the problem your product solves.
   Educates the masses about how the real stock market works through relatable data while competing against your friends.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
   Teaches the principles of investing in a very palatable manner in a competitive environment.
   Test your social media savvy. Invest in your friends/public figures and see who's a better investor.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
   Our goal is to inspire the rising generation the basics of investing through competition.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
   Create an account, start with $10,000 virtual dollars and invest in your favorite friends/public figures.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
   "It got my teenage daughter interested in the stock market."
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
   Come to our site and start playing today!
 
