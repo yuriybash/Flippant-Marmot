@@ -162,6 +162,10 @@ input{
   padding: .5em 1em;
   margin-right: -5px;
 }
+.number{
+  text-align: right;
+  width: 10%;
+}
 .handle{
   font-size: .8em
 }
