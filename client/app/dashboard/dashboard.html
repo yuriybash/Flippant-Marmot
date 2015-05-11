@@ -1,33 +1,35 @@
 <div id='info'>
-  <div class='networth'>NET WORTH <span class='right'>{{ networth | number:2 }}</span></div>
-  <div id='cash'>CASH BALANCE <span class='right' ng-class="{ red: portfolio.cash_balance < 0 }">{{portfolio.cash_balance | number:2}}</span></div>
+  <div class='networth'>NET WORTH <span class='rightfloat'>{{ networth | number:2 }}</span></div>
+  <div id='cash'>CASH BALANCE <span class='rightfloat' ng-class="{ red: portfolio.cash_balance < 0 }">{{portfolio.cash_balance | number:2}}</span></div>
 </div>
-<div id='dashheaders'>
-  <div>STOCK NAME</div>
-  <div>SHARES</div>
-  <div>PRICE</div>
-  <div>TOTAL VALUE</div>
-  <div>GAIN/LOSS</div>
-  <div>SELL</div>
-</div>
-<div id='stocks'>
-  <div ng-repeat='stock in portfolio.stocks'>
-    <div class='stock parent'>
-      <div class='dashwidth'>
-        <div>{{ stock.name }}</div>
-        <div class='handle'>{{ stock.screen_name }}</div>
-      </div>
-      <div class='dashwidth'>{{ stock.shares }}</div>
-      <div class='dashwidth'>{{ stock.current_price | number:2 }}</div>
-      <div class='dashwidth'>{{ stock.current_price * stock.shares | number: 2}}</div>
-      <div class='dashwidth' ng-class="{ red: (stock.current_price - (stock.follower_count_at_purchase/1000000)) * stock.shares < 0 }">{{ (stock.current_price - (stock.follower_count_at_purchase/1000000)) * stock.shares |number:2}}</div>
-      <div class='dashwidth'>
-        <button class='sell' ng-click="createAndSell(stock.screen_name, stock.name, stock.current_follower_count, stock.current_date, stock.current_price, stock.shares)">SELL</button>
+<div id='stockdata'>
+  <div id='dashheaders'>
+    <div class='thirtypercent'>STOCK NAME</div>
+    <div class='right fifteenpercent'>SHARES</div>
+    <div class='right fifteenpercent'>PRICE</div>
+    <div class='right fifteenpercent'>TOTAL</div>
+    <div class='right fifteenpercent'>CHANGE</div>
+    <div class='right tenpercent'>SELL</div>
+  </div>
+  <div id='stocks'>
+    <div ng-repeat='stock in portfolio.stocks'>
+      <div class='stock parent left'>
+        <div class='gray thirtypercent'>
+          <div>{{ stock.name }}</div>
+          <div class='handle'>{{ stock.screen_name }}</div>
+        </div>
+        <div class='gray right fifteenpercent'>{{ stock.shares | number}}</div>
+        <div class='gray right fifteenpercent'>{{ stock.current_price | number:2 }}</div>
+        <div class='gray right fifteenpercent'>{{ stock.current_price * stock.shares | number: 2}}</div>
+        <div class='green right fifteenpercent' ng-class="{ red: (stock.current_price - (stock.follower_count_at_purchase/1000000)) * stock.shares < 0 }">{{ (stock.current_price - (stock.follower_count_at_purchase/1000000)) * stock.shares |number:2}}</div>
+        <div class='gray right tenpercent'>
+          <button class='sell' ng-click="createAndSell(stock.screen_name, stock.name, stock.current_follower_count, stock.current_date, stock.current_price, stock.shares)">SELL</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
 <script src="lib/d3pie.min.js"></script>
-<script src="app/dashboard/piechart.js"></script>
 <div id="pieChart"></div>
+<script src="app/dashboard/piechart.js"></script>

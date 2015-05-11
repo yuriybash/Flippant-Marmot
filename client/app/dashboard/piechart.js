@@ -1,6 +1,6 @@
 //var pie = new d3pie("pieChart", );
 //
-var pieColors = ["#2484c1","#0c6197","#4daa4b","#90c469","#daca61","#e4a14b","#e98125","#cb2121","#830909","#923e99","#ae83d5","#bf273e","#ce2aeb","#bca44a","#618d1b","#1ee67b","#b0ec44","#a4a0c9","#322849","#86f71a","#d1c87f","#7d9058","#44b9b0","#7c37c0","#cc9fb1","#e65414","#8b6834","#248838"];
+var pieColors = ["#5270B6","#30426B","#192236","#354976","#0C5D91","#062D46","#06345","#cb2121","#830909","#923e99","#ae83d5","#bf273e","#ce2aeb","#bca44a","#618d1b","#1ee67b","#b0ec44","#a4a0c9","#322849","#86f71a","#d1c87f","#7d9058","#44b9b0","#7c37c0","#cc9fb1","#e65414","#8b6834","#248838"];
 
 var pieConfig = {
 	"header": {
@@ -20,7 +20,7 @@ var pieConfig = {
 		"canvasHeight": 600,
 		"canvasWidth": 800,
 		"pieInnerRadius": "33%",
-		"pieOuterRadius": "90%"
+		"pieOuterRadius": "80%"
 	},
 	"data": {
 		"sortOrder": "value-desc",
@@ -45,7 +45,7 @@ var pieConfig = {
 			"fontSize": 16
 		},
 		"mainLabel": {
-			"fontSize": 18
+			"fontSize": 16
 		},
 		"percentage": {
 			"color": "#ffffff",
@@ -54,7 +54,7 @@ var pieConfig = {
 		},
 		"value": {
 			"color": "#adadad",
-			"fontSize": 18
+			"fontSize": 16
 		},
 		"lines": {
 			"enabled": true
@@ -77,7 +77,7 @@ var pieConfig = {
 	},
 	"misc": {
 		"gradient": {
-			"enabled": true,
+			"enabled": false,
 			"percentage": 100
 		}
 	}

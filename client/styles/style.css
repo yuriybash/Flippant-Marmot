@@ -42,18 +42,9 @@ body{
   display: inline;
   margin-right: 1em;
 }
-
-
-.largeText{
-  font-size: 3em;
-}
 .thick{
   font-family: OstrichBlack;
   font-size: .9em;
-}
-.medium{
-  vertical-align: text-bottom;
-  font-family: OstrichMedium;
 }
 a{
   color: #fff;
@@ -79,38 +70,29 @@ a:hover{
   font-size: .5em;
 }
 #dashheaders div{
-  height: 1.5em;
   vertical-align: middle;
-  width: 16.66%;
   padding: .1em .4em;
   float: left;
   background: #B2B3B3;
 }
 #searchheaders div{
+  margin-top: 0;
   width: 25%;
   padding: .1em .4em;
   float: left;
   background: #B2B3B3;
 }
 .stock{
-  color: #B2B3B3;
   width: 100%;
 }
 .left{
   float: left;
 }
-.right{
+.rightfloat{
   float: right;
 }
 .dashboard{
   width: 100%;
-}
-.searchwidth{
-
-  width: 25%;
-}
-.dashwidth{
-  width: 16.66%;
 }
 .parent div{
   padding: .2em;
@@ -137,36 +119,44 @@ input{
   outline: none;
 }
 #search input{
-  width: 95%;
+  width: 90%;
   border: 1px solid #B2B3B3;
   border-radius: 0em .5em .5em 0em;
-  padding: .5em;
+  padding: 1em;
 }
 #search button{
   color: #fff;
   border: solid 1px #B2B3B3;
   border-radius: .5em 0em 0em .5em;
-  padding: .5em 1em;
+  padding: 1em 2em;
   margin-right: -10px;
 }
-.searchwidth input{
+.buy input{
   width: 80%;
   border: 1px solid #B2B3B3;
   border-radius: 0em .5em .5em 0em;
   padding: .5em;
 }
-.searchwidth button{
+.buy button{
   color: #fff;
   border: solid 1px #B2B3B3;
   border-radius: .5em 0em 0em .5em;
   padding: .5em 1em;
   margin-right: -5px;
 }
-.number{
+.right{
   text-align: right;
-  width: 10%;
+}
+.center{
+  text-align: center;
+}
+.center div{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .handle{
+  clear: both;
   font-size: .8em
 }
 .sell{
@@ -176,12 +166,41 @@ input{
   padding: .5em 1em;
   margin-right: -5px;
 }
+.gray{
+  color: #B2B3B3;
+}
+.green{
+  color: green;
+}
 .red{
   color: red;
+}
+#pieChart{
+  float: right;
+  width: 40%;
+}
+.tenpercent{
+  width: 10% !important; 
+}
+.fifteenpercent{
+  width: 15% !important; 
+}
+.twentyfivepercent{
+  width: 25% !important; 
+}
+.thirtypercent{
+  width: 30% !important; 
+}
+#stockdata{
+  width: 60%;
+  float: left;
 }
 
 /* login page */
 #login{
   font-family: OstrichLight;
   background: #5270B6;
+}
+.large{
+  font-size: 3em;
 }
