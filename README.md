@@ -1,5 +1,5 @@
 
-*Deploying this app to Heroku:*
+**Deploying this app to Heroku:**
 
 If this is your first time deploying to Heroku, following the ‘Getting Started with Node.js’ tutorial is key: https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction. The only thing the instructions do not specifically cover is how to install MongoLab, a Heroku add-on to use MongoDB in your production environment (MongoLab has an amazing interface for you to interact with your database). However, the instructions to do that are similar to those in the ‘Provision a database’ section in the tutorial (the second to last section), where it runs through how to add a Postgres database. The main difference is:
 
