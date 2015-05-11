@@ -11,10 +11,7 @@
   font-family: OstrichBlack;
   src: url(ostrichsans-black.otf);
 }
-@font-face{
-  font-family: OstrichMedium;
-  src: url(ostrichsans-medium.otf);
-}
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,700,900);
 
 /* body */
 body{
@@ -23,7 +20,8 @@ body{
   font-size: 3em;
   top: 0;
   left: 0;
-  font-family: sans-serif;
+  font-family: roboto;
+  font-weight: 100;
 }
 
 /* navigation */
@@ -119,7 +117,7 @@ input{
   outline: none;
 }
 #search input{
-  width: 90%;
+  width: 93%;
   border: 1px solid #B2B3B3;
   border-radius: 0em .5em .5em 0em;
   padding: 1em;
@@ -180,16 +178,16 @@ input{
   width: 40%;
 }
 .tenpercent{
-  width: 10% !important; 
+  width: 10%; 
 }
 .fifteenpercent{
-  width: 15% !important; 
+  width: 15%; 
 }
 .twentyfivepercent{
-  width: 25% !important; 
+  width: 25%; 
 }
 .thirtypercent{
-  width: 30% !important; 
+  width: 30%; 
 }
 #stockdata{
   width: 60%;
