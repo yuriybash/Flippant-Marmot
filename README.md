@@ -10,7 +10,7 @@
 
 ## Pricing Algorithm
 
-The stock price increases or decreases according to the growth of their follower count compared to the benchmark, which we deem as .0007, or 7% of 1%, or 7 basis points - which are 3 different ways to say the same number (For basis point definition see: http://www.investopedia.com/terms/b/basispoint.asp). If they grow at the faster pace than .0007 then their stock price increases, if they grow slower, then their stock price decreases. This benchmark has been chosen by calculating the average follower growth rate from the top 100 twitter accounts.
+The stock price increases or decreases according to the growth of their follower count compared to the benchmark, which we deem as .0007, or 7% of 1%, or 7 basis points - which are 3 different ways to say the same number (For basis point definition see: http://www.investopedia.com/terms/b/basispoint.asp). If they grow at a faster pace than .0007 then their stock price increases; if they grow slower, then their stock price decreases. This benchmark has been chosen by calculating the average follower growth rate from the top 100 twitter accounts.
 
 This algorithm will annualize the stock (the twitter account) daily, if not a full day has passed, we use the milliseconds that have passed divided by the milliseconds per day then we use this to annualize the stock's current growth rate to an assumed daily value. In other words, if the stock grows by 2 users in 10 seconds, we will assume the stock will keep growing 2 users every 10 seconds for the first day. Then compare that against the benchmark.
 
