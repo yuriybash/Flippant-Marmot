@@ -84,8 +84,8 @@ If you’re curious why the .bowerrc is in the root directory and how it relates
 
 **Visual:**
 <ul>
-<li> More D3!
-<li> Visual / Database: Track historical growths of portfolios and stocks
+<li> More D3 - bar charts, trend maps, density graphs, etc.
+<li> Visual / Database: Track historical growth of portfolios, stocks, follower counts.
 </ul>
 
 **UI/UX:**
@@ -94,6 +94,8 @@ If you’re curious why the .bowerrc is in the root directory and how it relates
 <li> Add "Featured Stocks" on search page
 <li> Add a recommendations engine to recommend other stocks users may also like. Check out: https://github.com/guymorita/recommendationRaccoon
 <li> Allow "Search" to search for keywords, rather than specific handles
+<li> Persistent sessions through MongoStore
+<li> Enhanced server-side testing with mock Passport initialization and cookie jar.
 </ul>
 
 **Other social media integration:**
