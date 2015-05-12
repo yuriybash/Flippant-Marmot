@@ -3,8 +3,8 @@
   <div id='cash'>CASH BALANCE <span class='rightfloat' ng-class="{ red: portfolio.cash_balance < 0 }">{{portfolio.cash_balance | number:2}}</span></div>
 </div>
 <div id='search'>
-  <form>
-    <button ng-click='search(searchTerm)'>search</button>
+  <form ng-submit='search(searchTerm)'>
+    <!-- <button ng-click='search(searchTerm)'>search</button> -->
     <input type='text' ng-model='searchTerm' placeholder='Input Twitter Handle'>
   </form>
 </div>
@@ -23,8 +23,8 @@
     <div class='gray twentyfivepercent center'>{{ stock.follower_count_at_query_time | number}}</div>
     <div class='gray twentyfivepercent center'>{{ stock.price_at_purchase | number:2}}</div>
     <div class='gray twentyfivepercent buy center'>
-      <form>
-        <button ng-click='buyStock(shareCount)'>BUY</button>
+      <form ng-submit='buyStock(shareCount)'>
+        <!-- <button ng-click='buyStock(shareCount)'>BUY</button> -->
         <input type='text' ng-model='shareCount' placeholder='shares'>
       </form>
     </div>

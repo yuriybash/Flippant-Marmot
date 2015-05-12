@@ -55,7 +55,7 @@ angular.module('socialStock.dash', [])
        pie.parentNode.removeChild(pie);
      }
     var pieWidth = document.body.clientWidth * .4;
-      var pieHeight = pieWidth * 0.75;
+      var pieHeight = pieWidth * 0.9;
       pieConfig.size.canvasHeight = pieHeight;
       pieConfig.size.canvasWidth = pieWidth
       var pie = new d3pie("pieChart", pieConfig);
