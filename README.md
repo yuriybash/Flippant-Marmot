@@ -69,6 +69,23 @@ After following the Getting Started tutorial, and installing MongoLab, you’re 
 
 If you’re curious why the .bowerrc is in the root directory and how it relates to deployment, feel free to read: http://www.rockytang168.com/how-to-bower-install-when-deploying/ 
 
+## Implementing the Twitter API
+
+For the Twitter API to work, add a file called "AuthConfig.js" to the file server -> auth with the structure as below:
+
+```
+module.exports = {   
+  twitter: {   
+    key: 'enter Twitter key here',    
+    secret: 'enter Twitter secret here'   
+  },   
+  facebook: {    
+    key: '',   
+    secret: ''   
+  }    
+};
+```
+
 ## Caveats
 <ul>
 <li> Users can only buy one instance of a stock
