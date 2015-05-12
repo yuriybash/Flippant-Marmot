@@ -3,17 +3,10 @@
 var pieColors = ["#5270B6","#30426B","#192236","#354976","#0C5D91","#062D46","#06345","#cb2121","#830909","#923e99","#ae83d5","#bf273e","#ce2aeb","#bca44a","#618d1b","#1ee67b","#b0ec44","#a4a0c9","#322849","#86f71a","#d1c87f","#7d9058","#44b9b0","#7c37c0","#cc9fb1","#e65414","#8b6834","#248838"];
 
 var pieConfig = {
-	"header": {
-		"title": {
-			"text": "Asset Allocation",
-			"fontSize": 24,
-			"font": "sans-serif"
-		}
-	},
 	"footer": {
 		"color": "#999999",
 		"fontSize": 10,
-		"font": "sans-serif",
+		"font": "roboto",
 		"location": "bottom-left"
 	},
 	"size": {
@@ -41,7 +34,7 @@ var pieConfig = {
 			"pieDistance": 32
 		},
 		"inner": {
-			"hideWhenLessThanPercentage": 3,
+			"hideWhenLessThanPercentage": 6,
 			"fontSize": 16
 		},
 		"mainLabel": {

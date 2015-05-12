@@ -103,7 +103,6 @@ a:hover{
   display: block;
 }
 .center{
-  margin-top: .5em;
   text-align: center;
 }
 #search {
@@ -116,10 +115,10 @@ input{
 *:focus{
   outline: none;
 }
-#search input{
-  width: 93%;
+input{
+  width: 100%;
   border: 1px solid #B2B3B3;
-  border-radius: 0em .5em .5em 0em;
+  border-radius: .5em;
   padding: 1em;
 }
 #search button{
@@ -128,12 +127,6 @@ input{
   border-radius: .5em 0em 0em .5em;
   padding: 1em 2em;
   margin-right: -10px;
-}
-.buy input{
-  width: 80%;
-  border: 1px solid #B2B3B3;
-  border-radius: 0em .5em .5em 0em;
-  padding: .5em;
 }
 .buy button{
   color: #fff;
@@ -177,8 +170,21 @@ input{
   float: right;
   width: 40%;
 }
+#stockdata{
+  width: 60%;
+  float: left;
+}
+.sixpercent{
+  width: 6%; 
+}
+.ninepercent{
+  width: 9%; 
+}
 .tenpercent{
   width: 10%; 
+}
+.eighteenpercent{
+  width: 18%; 
 }
 .fifteenpercent{
   width: 15%; 
@@ -189,15 +195,16 @@ input{
 .thirtypercent{
   width: 30%; 
 }
-#stockdata{
-  width: 60%;
-  float: left;
+.fourtypercent{
+  width: 40%
 }
-
 /* login page */
 #login{
   font-family: OstrichLight;
   background: #5270B6;
+}
+#login div{
+  margin: .5em;
 }
 .large{
   font-size: 3em;
