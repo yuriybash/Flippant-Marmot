@@ -56,7 +56,7 @@ module.exports = {
 
               // This following block of code represents our pricing algorithm. The stock price
               // increases or decreases according to the growth of their follower count compared
-              // to the benchmark, which we deem as .0007, or 7% or 1%, or 7 basis points.
+              // to the benchmark, which we deem as .00066, or 6.6% or 1%, or 6.6 basis points.
               // If they grow at the faster pace than .0007 then their stock price increases,
               // if they grow slower, then their stock price decreases.
               // This benchmark has been chosen by calculating the average follower growth rate
