@@ -87,7 +87,7 @@ module.exports = {
 
                 var growthRate = Math.pow(( Math.abs(currentNumFollowers-originalNumFollowers) / originalNumFollowers) + 1, 1/numDays) - 1;
                 console.log("daily growth rate: ", growthRate)
-                var growthRateVsExpected = (growthRate - .0007)/.0007;
+                var growthRateVsExpected = (growthRate - .00066)/.00066;
                 console.log("growthrateVsExpected is: ", growthRateVsExpected)
 
                 portfolio.stocks[i]["current_price"] = (1+growthRateVsExpected) * (portfolio.stocks[i].follower_count_at_purchase/1000000);

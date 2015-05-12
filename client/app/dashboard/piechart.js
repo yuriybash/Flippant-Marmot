@@ -13,7 +13,7 @@ var pieConfig = {
 		"canvasHeight": 600,
 		"canvasWidth": 800,
 		"pieInnerRadius": "33%",
-		"pieOuterRadius": "80%"
+		"pieOuterRadius": "60%"
 	},
 	"data": {
 		"sortOrder": "value-desc",
