@@ -1,5 +1,6 @@
-// handles functions for dashboard display, stock purchases, and stock sales from the portfolio db
-// MVP will have option to buy a stock once, but can sell stocks on multiple dates
+// Portfolio Controller handles functions for dashboard display, stock purchases, 
+// and stock sales interacting with the portfolio db.
+// MVP will have option to buy a stock once, but can sell stocks on multiple dates.
 
 var Portfolio = require('./portfolioModel.js');
 var Q = require('q');
