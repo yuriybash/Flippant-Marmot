@@ -1,7 +1,7 @@
-Visit us at https://socialcapital.herokuapp.com
+Visit us at https://socap.co
 # Social Capital 
 
-**The Social Media Stock Market where you can buy shares of your favorite celebrities, politicians, and friends.**
+**A social media stock market where you can buy shares of your favorite celebrities, politicians, and friends.**
 
 <ol>
 <li>Log in with Twitter
